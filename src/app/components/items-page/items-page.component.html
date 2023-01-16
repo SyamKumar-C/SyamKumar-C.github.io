@@ -1,0 +1,94 @@
+<div class="container mt-3 d-flex">
+  <!-- search item by id -->
+  <div class="mx-4">
+    <div>
+      <form action="">
+        <div class="d-flex">
+          <div class="mx-1">
+            <input
+              type="number"
+              name="id"
+              class="form-control"
+              [(ngModel)]="item.id"
+              placeholder="Search by id here"
+            />
+          </div>
+          <div class="mx-1">
+            <button type="submit" class="btn btn-info" (click)="searchWithId()">
+              find
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div>
+      <p>id: {{ item.id | emptySpace }}</p>
+      <p>name: {{ item.itemName | emptySpace }}</p>
+      <p>price: {{ item.price | emptySpace }}</p>
+    </div>
+  </div>
+
+  <!-- search items by searchtext -->
+  <div class="mx-4 col-md-5">
+    <div class="mb-3">
+      <form action="">
+        <div class="d-flex">
+          <div class="mx-1">
+            <input
+              type="text"
+              class="form-control"
+              name="searchText"
+              [(ngModel)]="searchText"
+              placeholder="Search by name or price"
+            />
+          </div>
+          <div class="mx-1">
+            <button type="submit" class="btn btn-info" (click)="searchItems()">
+              <i class="bi bi-search"></i>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div>
+      <p class="text-primary" *ngIf="searchOutput">
+        {{ searchOutput.count }} items found
+      </p>
+    </div>
+    <!-- refer to steps-to-add-infiniteScroll.txt in assets folder -->
+    <div
+      infiniteScroll
+      [infiniteScrollDistance]="2"
+      [infiniteScrollThrottle]="50"
+      [infiniteScrollUpDistance]="2"
+      [fromRoot]="true"
+      (scrolled)="handleScrollDown()"
+      [scrollWindow]="false"
+      *ngIf="searchOutput && searchOutput.items"
+      class="search-results"
+    >
+      <table class="table table-responsive table-bordered table-hovered">
+        <thead>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Price</th>
+        </thead>
+        <tbody>
+          <!-- <div> -->
+          <tr *ngFor="let item of searchOutput.items">
+            <td>{{ item.id | emptySpace }}</td>
+            <td>{{ item.itemName | emptySpace }}</td>
+            <td>{{ item.price | emptySpace }}</td>
+          </tr>
+          <!-- </div> -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- adding new item -->
+  <div style="margin-left: 50px">
+    <button class="btn btn-success" routerLink="/add-item">Add Item</button>
+    <button class="btn btn-info" (click)="handleScrollDown()">scroll</button>
+  </div>
+</div>

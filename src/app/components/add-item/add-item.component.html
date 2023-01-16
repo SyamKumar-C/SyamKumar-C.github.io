@@ -1,0 +1,25 @@
+<div class="container mt-3">
+  <div class="col-md-4">
+    <form action="">
+      <label for="itemName">Enter item name</label>
+      <input
+        type="text"
+        class="form-control"
+        name="itemName"
+        [(ngModel)]="item.itemName"
+      />
+
+      <label for="itemName">Enter item price</label>
+      <input
+        type="number"
+        class="form-control"
+        name="price"
+        [(ngModel)]="item.price"
+      />
+
+      <div>
+        <button class="btn btn-success" (click)="addItem()">Add</button>
+      </div>
+    </form>
+  </div>
+</div>

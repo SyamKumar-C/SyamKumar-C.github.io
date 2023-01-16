@@ -1,0 +1,40 @@
+1. Add package.
+   npm i ngx-infinite-scroll@10.0.1   -> version may vary
+2. Make sure this is added in package.json and package-locak.json
+3. Declare this in app.module.ts
+4. In .ts file
+   handleScrollDown() {
+    console.log('scrolled');
+    this.page++;
+    if (this.loadMore) {
+      this.itemService
+        .searchItems({
+          searchText: this.searchText,
+          page: this.page,
+          pageSize: this.pageSize,
+        })
+        .subscribe((res) => {
+          res.data.searchItems.items.map((item: any) => {
+            this.searchOutput.items.push(item);
+            this.loadMore = res.data.searchItems.items.length === this.pageSize;
+          });
+        });
+    }
+  }
+5. In .html file
+   <div
+      infiniteScroll
+      [infiniteScrollDistance]="2"
+      [infiniteScrollThrottle]="50"
+      [infiniteScrollUpDistance]="2"
+      [fromRoot]="true"
+      (scrolled)="handleScrollDown()"
+      [scrollWindow]="false"
+      *ngIf="searchOutput && searchOutput.items"
+      class="search-results"
+    >
+6. In .scss file
+   .search-results{
+    max-height: 200px;
+    overflow: auto;
+}

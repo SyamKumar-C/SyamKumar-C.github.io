@@ -1,0 +1,9 @@
+/* You can add global styles to this file, and also import other style files */
+
+// method-1
+// @import '~bootstrap/dist/css/bootstrap.css'; //bootstrap
+// @import "~bootstrap-icons/font/bootstrap-icons.css"; //bootstrap-icons
+
+//method-2
+@import "../node_modules/bootstrap/scss/bootstrap.scss"; //bootstrap
+@import "../node_modules/bootstrap-icons/font/bootstrap-icons.scss"; //bootstrap-icons

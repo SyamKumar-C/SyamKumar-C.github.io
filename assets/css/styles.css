@@ -539,7 +539,7 @@ img, svg { display: block; max-width: 100%; }
   font-size: 0.86rem;
   color: var(--text-muted);
 }
-.stack-secondary li + li::before { content: "·"; margin: 0 9px; color: var(--text-dim); }
+.stack-secondary li:not(:last-child)::after { content: "·"; margin: 0 9px; color: var(--text-dim); }
 
 .hero-cta {
   display: flex;
@@ -554,6 +554,7 @@ img, svg { display: block; max-width: 100%; }
   gap: 2px 18px;
   margin-top: 16px;
 }
+@media (max-width: 359px) { .social { column-gap: 14px; } }
 .social a {
   display: inline-flex;
   align-items: center;
@@ -566,9 +567,9 @@ img, svg { display: block; max-width: 100%; }
 .social a:hover { color: var(--text); }
 .social .icon { width: 16px; height: 16px; }
 
-/* Hero architecture panel — on small phones the full diagram lives in Projects instead,
-   so the key metrics stay close to the top */
-@media (max-width: 639px) {
+/* Hero architecture panel — shown beside the intro from 1024px. Below that it would stack under
+   the text and push the metrics a screen down; the full diagram lives in Projects instead. */
+@media (max-width: 1023px) {
   .arch { display: none; }
 }
 .arch {
@@ -707,8 +708,8 @@ img, svg { display: block; max-width: 100%; }
 }
 .metric:first-child { padding-left: 0; border-left: 0; }
 .metric-val {
-  font-size: clamp(2.3rem, 11vw, 5rem);
-  font-weight: 700;
+  font-size: clamp(2.5rem, 12vw, 5.75rem);
+  font-weight: 800;
   letter-spacing: -0.045em;
   line-height: 0.95;
   color: var(--text);
@@ -716,8 +717,8 @@ img, svg { display: block; max-width: 100%; }
   white-space: nowrap;
 }
 .metric-val .affix {
-  font-size: 0.6em;
-  font-weight: 600;
+  font-size: 0.58em;
+  font-weight: 700;
   letter-spacing: -0.02em;
   color: var(--accent-text);
 }
@@ -774,7 +775,7 @@ img, svg { display: block; max-width: 100%; }
   box-shadow: var(--shadow-sm);
 }
 .strength {
-  padding: 26px 22px;
+  padding: 22px 20px;
   background: var(--surface);
   transition: background-color 0.25s var(--ease);
 }
@@ -783,7 +784,7 @@ img, svg { display: block; max-width: 100%; }
 [data-theme="dark"] .strength:hover { background: var(--surface); }
 .strength-num {
   display: block;
-  margin-bottom: 14px;
+  margin-bottom: 10px;
   font-family: var(--font-mono);
   font-size: 0.78rem;
   color: var(--accent-text);
@@ -949,7 +950,7 @@ img, svg { display: block; max-width: 100%; }
 .project h3 { margin-top: 10px; font-size: clamp(1.35rem, 4vw, 1.75rem); }
 .project-desc { margin-top: 12px; color: var(--text-muted); max-width: 38rem; }
 
-.supporting { margin-top: 26px; }
+.supporting { margin-top: 22px; }
 .supporting-title, .diagram-title {
   margin-bottom: 12px;
   font-family: var(--font-mono);
@@ -959,23 +960,25 @@ img, svg { display: block; max-width: 100%; }
   color: var(--text-dim);
 }
 .supporting-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-  gap: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
 }
 .supporting-list div {
-  padding: 10px 12px;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  padding: 5px 10px;
   border: 1px solid var(--border);
-  border-radius: 8px;
-  background: var(--surface-2);
+  border-radius: 6px;
 }
-.supporting-list dt { font-size: 0.88rem; font-weight: 600; }
-.supporting-list dd { font-size: 0.78rem; color: var(--text-dim); }
+.supporting-list dt { font-size: 0.82rem; font-weight: 600; color: var(--text-muted); }
+.supporting-list dd { font-size: 0.74rem; color: var(--text-dim); }
 
 /* eBDN architecture diagram */
 .sysmap {
   margin: 0;
-  padding: 18px;
+  padding: 18px 16px 18px;
   border: 1px solid var(--border);
   border-radius: 12px;
   background: var(--bg-alt);
@@ -983,19 +986,23 @@ img, svg { display: block; max-width: 100%; }
 [data-theme="dark"] .sysmap { background: var(--bg); }
 .flow-step {
   display: grid;
-  gap: 1px;
-  padding: 10px 12px;
+  grid-template-columns: minmax(0, 1fr);
+  column-gap: 14px;
+  row-gap: 3px;
+  align-items: baseline;
+  padding: 12px 14px;
   border: 1px solid var(--border);
   border-radius: 9px;
   background: var(--surface);
 }
-.flow-step strong { font-size: 0.92rem; font-weight: 600; overflow-wrap: anywhere; }
-.flow-step em { font-style: normal; font-size: 0.78rem; color: var(--text-dim); }
+.flow-step .flow-kind { padding-bottom: 1px; }
+.flow-step strong { font-size: 0.92rem; font-weight: 600; line-height: 1.3; overflow-wrap: anywhere; }
+.flow-step em { font-style: normal; font-size: 0.78rem; line-height: 1.4; color: var(--text-dim); }
 .flow-accent { border-color: var(--accent-line); background: linear-gradient(var(--accent-soft), var(--accent-soft)), var(--surface); }
 .flow-arrow {
   position: relative;
-  height: 34px;
-  margin-left: 22px;
+  height: 38px;
+  margin-left: 28px;
   border-left: 1.5px solid var(--border-strong);
 }
 .flow-arrow::after, .flow-inner li + li::after {
@@ -1006,7 +1013,7 @@ img, svg { display: block; max-width: 100%; }
   border-bottom: 1.5px solid var(--border-strong);
   transform: rotate(45deg);
 }
-.flow-arrow::after { left: -4.5px; bottom: 1px; }
+.flow-arrow::after { left: -4.5px; bottom: 2px; }
 .flow-arrow span {
   position: absolute;
   left: 14px; top: 50%;
@@ -1017,7 +1024,7 @@ img, svg { display: block; max-width: 100%; }
   white-space: nowrap;
 }
 .aws-box {
-  padding: 12px;
+  padding: 12px 12px 14px;
   border: 1.5px dashed var(--accent-line);
   border-radius: 12px;
 }
@@ -1029,16 +1036,21 @@ img, svg { display: block; max-width: 100%; }
   color: var(--accent-text);
 }
 .aws-label span { font-weight: 400; color: var(--text-dim); }
-.flow-inner { display: grid; gap: 22px; }
+.flow-inner { display: grid; gap: 28px; }
 .flow-inner li { position: relative; }
 .flow-inner li + li::before {
   content: "";
   position: absolute;
-  left: 22px; top: -23px;
-  height: 22px;
+  left: 28px; top: -29px;
+  height: 27px;
   border-left: 1.5px solid var(--border-strong);
 }
-.flow-inner li + li::after { left: 18.5px; top: -10px; }
+.flow-inner li + li::after { left: 24.5px; top: -10px; }
+@media (min-width: 480px) and (max-width: 1023px) {
+  .flow-step { grid-template-columns: 76px minmax(0, 1fr); }
+  .flow-step .flow-kind { grid-row: 1 / span 2; padding: 2px 0 0; }
+  .flow-step em { grid-column: 2; }
+}
 
 @media (min-width: 768px) {
   .project { padding: 32px; }
@@ -1060,12 +1072,13 @@ img, svg { display: block; max-width: 100%; }
   .project-feature .supporting { grid-column: 2; grid-row: 1 / span 3; margin-top: 4px; }
 
   /* Architecture runs left → right on wide screens */
-  .sysmap { padding: 20px 22px 22px; }
+  .sysmap { padding: 22px 24px 24px; }
   .flow { display: flex; align-items: center; }
-  .flow > .flow-step { flex: none; width: 150px; }
+  .flow-step { padding: 12px 14px 13px; }
+  .flow > .flow-step { flex: none; width: 152px; }
   .flow-arrow {
     flex: none;
-    width: 64px; height: 0;
+    width: 72px; height: 0;
     margin: 18px 0 0;
     border-left: 0;
     border-top: 1.5px solid var(--border-strong);
@@ -1073,10 +1086,11 @@ img, svg { display: block; max-width: 100%; }
   .flow-arrow::after { left: auto; right: 1px; bottom: auto; top: -4.5px; transform: rotate(-45deg); }
   .flow-arrow span { left: 50%; top: -18px; transform: translateX(-50%); font-size: 0.66rem; }
   .aws-box { flex: 1; min-width: 0; }
-  .flow-inner { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.4fr) minmax(0, 1fr); gap: 26px; }
+  .aws-box { padding: 12px 14px 14px; }
+  .flow-inner { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) minmax(0, 1.7fr) minmax(0, 1fr); gap: 34px; }
   .flow-inner .flow-step { height: 100%; }
-  .flow-inner li + li::before { left: -27px; top: 50%; height: 0; width: 26px; border-left: 0; border-top: 1.5px solid var(--border-strong); }
-  .flow-inner li + li::after { left: -10px; top: calc(50% - 3.5px); transform: rotate(-45deg); }
+  .flow-inner li + li::before { left: -32px; top: 50%; height: 0; width: 28px; border-left: 0; border-top: 1.5px solid var(--border-strong); }
+  .flow-inner li + li::after { left: -11px; top: calc(50% - 3.5px); transform: rotate(-45deg); }
   .flow-inner .flow-step strong { font-size: 0.88rem; overflow-wrap: normal; }
 }
 

@@ -75,6 +75,7 @@
       <div class="nav-menu" id="nav-menu">
         <ul class="nav-links">
           <li><a href="#home">Home</a></li>
+          <li><a href="#strengths">Strengths</a></li>
           <li><a href="#experience">Experience</a></li>
           <li><a href="#projects">Projects</a></li>
           <li><a href="#skills">Skills</a></li>
@@ -189,19 +190,19 @@
       <div class="container">
         <dl class="metrics reveal">
           <div class="metric">
-            <dt class="metric-label">Years of experience</dt>
-            <dd class="metric-val">4.5+</dd>
+            <dt class="metric-label">Years experience</dt>
+            <dd class="metric-val">4.5<span class="affix">+</span></dd>
           </div>
           <div class="metric">
-            <dt class="metric-label">Frontend performance improvement</dt>
-            <dd class="metric-val">~30%</dd>
+            <dt class="metric-label">Frontend performance</dt>
+            <dd class="metric-val"><span class="affix">~</span>30<span class="affix">%</span></dd>
           </div>
           <div class="metric">
-            <dt class="metric-label">Scrolling performance improvement</dt>
-            <dd class="metric-val">~50%</dd>
+            <dt class="metric-label">Scrolling performance</dt>
+            <dd class="metric-val"><span class="affix">~</span>50<span class="affix">%</span></dd>
           </div>
         </dl>
-        <p class="metrics-note">Performance figures are approximate, from optimizing Angular component rendering and API interactions on ZeroNorth eBDN.</p>
+        <p class="metrics-note">Performance improvements are approximate, from Angular rendering and API-interaction optimization on ZeroNorth eBDN.</p>
       </div>
     </section>
 
@@ -339,16 +340,16 @@
             <p class="project-label">WCS · 2024 – Present</p>
             <h3 id="p-ebdn">ZeroNorth – eBDN</h3>
             <p class="project-desc">
-              A digital bunker delivery note application used by Cargo Officers during ship-to-ship fuel
-              transfer operations. It captures bunkering data and generates digitally signed BDN reports
-              for submission to the Singapore Maritime and Port Authority.
+              Digital bunker delivery note application used by Cargo Officers during ship-to-ship fuel
+              transfer operations. It captures bunkering data and produces digitally signed BDN reports
+              for the Singapore Maritime and Port Authority.
             </p>
             <div class="supporting">
-              <p class="supporting-title">Supporting components</p>
+              <p class="supporting-title">Supporting technologies</p>
               <dl class="supporting-list">
-                <div><dt>IndexedDB</dt><dd>client-side cache, offline use</dd></div>
-                <div><dt>JWT</dt><dd>auth with refresh tokens</dd></div>
-                <div><dt>Datadog</dt><dd>APM · RUM · logs</dd></div>
+                <div><dt>IndexedDB</dt><dd>browser cache</dd></div>
+                <div><dt>JWT</dt><dd>API auth</dd></div>
+                <div><dt>Datadog</dt><dd>observability</dd></div>
                 <div><dt>GitHub Actions</dt><dd>CI</dd></div>
                 <div><dt>ArgoCD</dt><dd>deployment</dd></div>
               </dl>
@@ -356,15 +357,15 @@
           </div>
 
           <figure class="sysmap" aria-labelledby="sysmap-cap">
-            <figcaption id="sysmap-cap" class="diagram-title">Architecture · request path</figcaption>
+            <figcaption id="sysmap-cap" class="diagram-title">Architecture</figcaption>
             <div class="flow">
-              <div class="flow-step"><span class="flow-kind">Client</span><strong>Angular 17</strong><em>IndexedDB cache</em></div>
+              <div class="flow-step"><span class="flow-kind">Client</span><strong>Angular 17</strong><em>standalone components</em></div>
               <div class="flow-arrow" aria-hidden="true"><span>JWT · REST</span></div>
               <div class="aws-box">
-                <p class="aws-label">AWS <span>&middot; migrated from on-premise VMs</span></p>
+                <p class="aws-label">AWS</p>
                 <ol class="flow-inner">
-                  <li class="flow-step flow-accent"><span class="flow-kind">API</span><strong>Spring Boot 3</strong><em>Java 21 REST APIs</em></li>
-                  <li class="flow-step"><span class="flow-kind">Context</span><strong>Tenant context</strong><em>propagated per request</em></li>
+                  <li class="flow-step flow-accent"><span class="flow-kind">API</span><strong>Spring Boot APIs</strong><em>Java 21 · Spring Boot 3</em></li>
+                  <li class="flow-step"><span class="flow-kind">Context</span><strong>Tenant context</strong><em>resolved per request</em></li>
                   <li class="flow-step"><span class="flow-kind">Routing</span><strong>AbstractRoutingDataSource</strong><em>dynamic datasource routing</em></li>
                   <li class="flow-step"><span class="flow-kind">Data</span><strong>PostgreSQL</strong><em>tenant-specific data</em></li>
                 </ol>
@@ -378,55 +379,22 @@
             <p class="project-label">TCS · 2021 – 2023</p>
             <h3 id="p-bt">British Telecom (BT)</h3>
             <p class="project-desc">
-              Enterprise application for British Telecom: backend services, frontend integration, search,
-              reporting and communication with other microservices.
+              Enterprise application for British Telecom &mdash; backend services exposed over REST and
+              GraphQL, integrated with other microservices.
             </p>
           </div>
           <ul class="capabilities" aria-label="System capabilities">
-            <li><span>Interface</span>REST + GraphQL</li>
+            <li><span>API</span>REST APIs</li>
+            <li><span>API</span>GraphQL</li>
             <li><span>Integration</span>Microservice communication</li>
-            <li><span>Search</span>Global, multi-attribute</li>
-            <li><span>Reporting</span>Async processing · materialized views</li>
+            <li><span>Search</span>Global search</li>
+            <li><span>Reporting</span>Asynchronous processing</li>
+            <li><span>Reporting</span>Materialized views</li>
             <li><span>Data</span>PostgreSQL</li>
-            <li><span>Runtime</span>AWS ECS · CloudWatch</li>
+            <li><span>Runtime</span>AWS ECS</li>
+            <li><span>Monitoring</span>CloudWatch</li>
           </ul>
         </article>
-      </div>
-    </section>
-
-    <!-- ============ ENGINEERING STORIES — depth ============ -->
-    <section class="section section-alt" id="stories" aria-labelledby="stories-title">
-      <div class="container">
-        <header class="section-head reveal">
-          <p class="kicker">Engineering stories</p>
-          <h2 id="stories-title">Problems, approaches, results</h2>
-        </header>
-        <div class="stories">
-          <article class="story reveal">
-            <h3>Multi-tenant data access</h3>
-            <dl>
-              <div><dt>Problem</dt><dd>Multiple tenants need isolated data access within one application.</dd></div>
-              <div><dt>Approach</dt><dd>Tenant context + <code>AbstractRoutingDataSource</code> + dynamic datasource routing.</dd></div>
-              <div><dt>Result</dt><dd>Tenant-specific data isolation inside the Spring Boot application.</dd></div>
-            </dl>
-          </article>
-          <article class="story reveal">
-            <h3>Frontend performance</h3>
-            <dl>
-              <div><dt>Problem</dt><dd>Rendering, scrolling and repeated API calls hurt the user experience.</dd></div>
-              <div><dt>Approach</dt><dd>Angular rendering optimization, IndexedDB caching and leaner API interactions.</dd></div>
-              <div><dt>Result</dt><dd><strong>~30%</strong> frontend and <strong>~50%</strong> scrolling performance improvement.</dd></div>
-            </dl>
-          </article>
-          <article class="story reveal">
-            <h3>Production observability</h3>
-            <dl>
-              <div><dt>Problem</dt><dd>Production issues need visibility into behavior and bottlenecks.</dd></div>
-              <div><dt>Approach</dt><dd>Datadog APM, RUM and logs; AWS CloudWatch for ECS workloads.</dd></div>
-              <div><dt>Result</dt><dd>Faster investigation of production issues and bottlenecks.</dd></div>
-            </dl>
-          </article>
-        </div>
       </div>
     </section>
 
@@ -481,15 +449,12 @@
           <div class="oss-copy">
             <p class="kicker">Open source · Angular · npm</p>
             <h2 id="oss-title"><code>required-field-marker</code></h2>
-            <p class="oss-desc">
-              Reusable Angular form-field validation and error indication &mdash; a lightweight standalone
-              directive that automatically marks required form fields with a custom indicator.
-            </p>
+            <p class="oss-desc">Angular package for reusable form-field validation and error indication.</p>
           </div>
           <div class="oss-side">
             <pre class="snippet" aria-label="Install command"><code><span class="prompt" aria-hidden="true">$</span> npm install required-field-marker</code></pre>
             <div class="oss-actions">
-              <a class="btn btn-primary btn-sm" href="https://www.npmjs.com/package/required-field-marker" target="_blank" rel="noopener">View on npm</a>
+              <a class="btn btn-primary btn-sm" href="https://www.npmjs.com/package/required-field-marker" target="_blank" rel="noopener">View on NPM <span aria-hidden="true">→</span></a>
               <span class="oss-meta" id="npm-meta" hidden></span>
             </div>
           </div>
@@ -504,8 +469,8 @@
           <p class="kicker">About</p>
           <h2 id="about-title">Backend-first, full-stack in practice</h2>
           <p>
-            I'm a Java Full Stack Developer with 4.5+ years on enterprise applications. My core is Java and
-            Spring Boot with PostgreSQL; I build the Angular frontends too, and deploy on AWS.
+            Most of my work is on the backend &mdash; Java, Spring Boot and PostgreSQL &mdash; and I build the
+            Angular frontends that sit on top of it.
           </p>
           <p>
             I care about what happens after the merge &mdash; performance, security, and being able to see

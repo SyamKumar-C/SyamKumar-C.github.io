@@ -4,10 +4,51 @@
   var doc = document.documentElement;
   doc.classList.add("js");
 
+  /* ---- Theme: saved choice wins; otherwise follow the system (light if unknown) ---- */
+  var THEME_KEY = "theme";
+  var themeBtn = document.querySelector(".theme-toggle");
+  var themeMeta = document.querySelector('meta[name="theme-color"]');
+  var systemDark = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;
+  var animTimer;
+
+  function savedTheme() {
+    try {
+      var t = localStorage.getItem(THEME_KEY);
+      return t === "light" || t === "dark" ? t : null;
+    } catch (e) { return null; }
+  }
+
+  function applyTheme(theme, animate) {
+    if (animate) {
+      doc.classList.add("theme-anim");
+      clearTimeout(animTimer);
+      animTimer = setTimeout(function () { doc.classList.remove("theme-anim"); }, 350);
+    }
+    doc.setAttribute("data-theme", theme);
+    var dark = theme === "dark";
+    themeBtn.setAttribute("aria-pressed", String(dark));
+    themeBtn.title = dark ? "Switch to light theme" : "Switch to dark theme";
+    if (themeMeta) themeMeta.setAttribute("content", dark ? "#0b0d11" : "#fafbfc");
+  }
+
+  applyTheme(doc.getAttribute("data-theme") === "dark" ? "dark" : "light", false);
+
+  themeBtn.addEventListener("click", function () {
+    var next = doc.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    try { localStorage.setItem(THEME_KEY, next); } catch (e) { /* not persisted */ }
+    applyTheme(next, true);
+  });
+
+  if (systemDark && systemDark.addEventListener) {
+    systemDark.addEventListener("change", function (e) {
+      if (!savedTheme()) applyTheme(e.matches ? "dark" : "light", true);
+    });
+  }
+
   /* ---- Mobile navigation ---- */
   var toggle = document.querySelector(".nav-toggle");
   var menu = document.getElementById("nav-menu");
-  var desktop = window.matchMedia("(min-width: 900px)");
+  var desktop = window.matchMedia("(min-width: 1024px)");
 
   function setMenu(open) {
     toggle.setAttribute("aria-expanded", String(open));

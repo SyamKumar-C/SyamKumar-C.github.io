@@ -4,11 +4,23 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Syam Kumar Chenchugalla | Java Full Stack Developer</title>
-  <meta name="description" content="Java Full Stack Developer with 4.5+ years building enterprise web applications using Java, Spring Boot, Angular, PostgreSQL and AWS. Multi-tenant systems, secure APIs, performance optimization and cloud migration.">
+  <meta name="description" content="Java Full Stack Developer with 4.5+ years building enterprise web applications with Java, Spring Boot, Angular, PostgreSQL and AWS.">
   <meta name="author" content="Syam Kumar Chenchugalla">
-  <meta name="theme-color" content="#0b0d11">
-  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#fafbfc">
   <link rel="canonical" href="https://syamkumar-c.github.io/">
+
+  <!-- Resolve the theme before first paint: saved choice > system preference > light -->
+  <script>
+    (function () {
+      var d = document.documentElement, t = null;
+      try { t = localStorage.getItem("theme"); } catch (e) {}
+      if (t !== "light" && t !== "dark") {
+        t = window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      }
+      d.setAttribute("data-theme", t);
+      d.classList.add("js");
+    })();
+  </script>
 
   <meta property="og:type" content="profile">
   <meta property="og:site_name" content="Syam Kumar Chenchugalla">
@@ -30,7 +42,6 @@
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/styles.css">
-  <script>document.documentElement.classList.add("js")</script>
 
   <script type="application/ld+json">
   {
@@ -57,50 +68,61 @@
 
   <header class="site-header" id="top">
     <nav class="nav container" aria-label="Primary">
-      <a class="brand" href="#top" aria-label="Syam Kumar Chenchugalla — back to top">
+      <a class="brand" href="#home" aria-label="Syam Kumar Chenchugalla — home">
         <span class="brand-mark" aria-hidden="true">SK</span>
         <span class="brand-name">Syam Kumar</span>
       </a>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu">
-        <span class="sr-only">Menu</span>
-        <span class="nav-toggle-bar" aria-hidden="true"></span>
-      </button>
       <div class="nav-menu" id="nav-menu">
         <ul class="nav-links">
-          <li><a href="#strengths">Strengths</a></li>
+          <li><a href="#home">Home</a></li>
           <li><a href="#experience">Experience</a></li>
           <li><a href="#projects">Projects</a></li>
           <li><a href="#skills">Skills</a></li>
+          <li><a href="#open-source">Open Source</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
-        <a class="btn btn-sm btn-outline" href="assets/Syam-Kumar-Chenchugalla-Resume.pdf" download>Resume</a>
+        <a class="btn btn-sm btn-outline nav-resume" href="assets/Syam-Kumar-Chenchugalla-Resume.pdf" download>Resume</a>
+      </div>
+      <div class="nav-actions">
+        <button class="theme-toggle" type="button" aria-pressed="false" aria-label="Dark theme" title="Switch theme">
+          <span class="theme-thumb" aria-hidden="true"></span>
+          <svg class="icon theme-sun" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <svg class="icon theme-moon" aria-hidden="true" viewBox="0 0 24 24"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z"/></svg>
+        </button>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu">
+          <span class="sr-only">Menu</span>
+          <span class="nav-toggle-bar" aria-hidden="true"></span>
+        </button>
       </div>
     </nav>
   </header>
 
   <main id="main">
-    <!-- ============ HERO ============ -->
-    <section class="hero" aria-labelledby="hero-title">
+    <!-- ============ HERO — who I am ============ -->
+    <section class="hero" id="home" aria-labelledby="hero-title">
       <div class="hero-grid-bg" aria-hidden="true"></div>
       <div class="container hero-inner">
         <div class="hero-copy">
           <p class="eyebrow hero-anim" style="--d:0">
             <span class="status-dot" aria-hidden="true"></span>
-            Java Full Stack Developer · Hyderabad, India
+            Hyderabad, India
           </p>
           <h1 class="hero-title hero-anim" id="hero-title" style="--d:1">Syam Kumar<br>Chenchugalla</h1>
+          <p class="hero-role hero-anim" style="--d:2">Java Full Stack Developer</p>
           <p class="hero-lede hero-anim" style="--d:2">
-            <strong>4.5+ years</strong> building enterprise web applications &mdash; multi-tenant Spring Boot
-            services, Angular frontends and AWS infrastructure that run in production.
+            <strong>4.5+ years</strong> building enterprise web applications &mdash; Spring Boot services and
+            the Angular frontends that run on them, in production.
           </p>
-          <ul class="hero-stack hero-anim" style="--d:3" aria-label="Primary technology stack">
-            <li class="is-primary">Java</li>
-            <li class="is-primary">Spring Boot</li>
-            <li class="is-primary">Angular</li>
-            <li>PostgreSQL</li>
-            <li class="is-primary">AWS</li>
-          </ul>
+          <div class="hero-stack hero-anim" style="--d:3">
+            <ul class="stack-primary" aria-label="Primary stack">
+              <li>Java</li>
+              <li>Spring Boot</li>
+            </ul>
+            <ul class="stack-secondary" aria-label="Also working with">
+              <li>Angular</li><li>PostgreSQL</li><li>AWS</li><li>GraphQL</li>
+            </ul>
+          </div>
           <div class="hero-cta hero-anim" style="--d:4">
             <a class="btn btn-primary" href="#projects">View My Work</a>
             <a class="btn btn-outline" href="assets/Syam-Kumar-Chenchugalla-Resume.pdf" download>
@@ -160,67 +182,78 @@
           <figcaption class="sr-only">Simplified view of the stack used on the ZeroNorth eBDN project.</figcaption>
         </figure>
       </div>
+    </section>
 
+    <!-- ============ KEY METRICS — evidence ============ -->
+    <section class="metrics-band" aria-label="Key metrics">
       <div class="container">
-        <dl class="hero-stats hero-anim" style="--d:6">
-          <div><dt>Experience</dt><dd>4.5+ <span>years</span></dd></div>
-          <div><dt>Frontend performance</dt><dd>~30% <span>improvement</span></dd></div>
-          <div><dt>Scrolling performance</dt><dd>~50% <span>improvement</span></dd></div>
-          <div><dt>Enterprise programs</dt><dd>ZeroNorth · BT</dd></div>
+        <dl class="metrics reveal">
+          <div class="metric">
+            <dt class="metric-label">Years of experience</dt>
+            <dd class="metric-val">4.5+</dd>
+          </div>
+          <div class="metric">
+            <dt class="metric-label">Frontend performance improvement</dt>
+            <dd class="metric-val">~30%</dd>
+          </div>
+          <div class="metric">
+            <dt class="metric-label">Scrolling performance improvement</dt>
+            <dd class="metric-val">~50%</dd>
+          </div>
         </dl>
+        <p class="metrics-note">Performance figures are approximate, from optimizing Angular component rendering and API interactions on ZeroNorth eBDN.</p>
       </div>
     </section>
 
-    <!-- ============ STRENGTHS ============ -->
+    <!-- ============ WHAT I BUILD — strengths ============ -->
     <section class="section" id="strengths" aria-labelledby="strengths-title">
       <div class="container">
         <header class="section-head reveal">
-          <p class="kicker">What I bring</p>
-          <h2 id="strengths-title">Key engineering strengths</h2>
-          <p class="section-sub">Where I add the most value on a team building production software.</p>
+          <p class="kicker">What I build</p>
+          <h2 id="strengths-title">Engineering strengths</h2>
         </header>
         <ol class="strengths">
           <li class="strength reveal">
             <span class="strength-num">01</span>
             <h3>Backend Engineering</h3>
-            <p>Designing Spring Boot services and APIs that other teams can rely on &mdash; clean REST and GraphQL contracts, JPA/Hibernate data access, and integration with external microservices.</p>
-            <p class="strength-tech">Spring Boot · REST · GraphQL · JPA/Hibernate · Microservices</p>
+            <p>Spring Boot services with clean API contracts other teams can rely on.</p>
+            <p class="strength-tech">REST · GraphQL · JPA/Hibernate · Microservice communication</p>
           </li>
           <li class="strength reveal">
             <span class="strength-num">02</span>
-            <h3>Full-Stack Delivery</h3>
-            <p>Owning features end to end: the Spring Boot API and the Angular screen that consumes it, plus reusable standalone components so the next feature ships faster.</p>
-            <p class="strength-tech">Angular 17 · TypeScript · RxJS · Standalone Components</p>
+            <h3>Full-Stack Applications</h3>
+            <p>Features end to end &mdash; the API and the Angular screen that uses it.</p>
+            <p class="strength-tech">Angular · TypeScript · RxJS · Standalone components</p>
           </li>
           <li class="strength reveal">
             <span class="strength-num">03</span>
             <h3>Cloud &amp; DevOps</h3>
-            <p>Contributed to moving an application from on-premise VMs to AWS, and supporting the CI/CD and deployment workflows that release it.</p>
-            <p class="strength-tech">AWS · GitHub Actions · ArgoCD · CI/CD</p>
+            <p>Running on AWS and shipping through automated pipelines.</p>
+            <p class="strength-tech">AWS · CI/CD · GitHub Actions · ArgoCD</p>
           </li>
           <li class="strength reveal">
             <span class="strength-num">04</span>
             <h3>Performance &amp; Scalability</h3>
-            <p>Finding where time is actually spent &mdash; rendering, repeated API calls, slow reports &mdash; and fixing it with caching, async processing, materialized views and query tuning.</p>
-            <p class="strength-tech">Client-side caching · Async processing · Query optimization</p>
+            <p>Finding where time is spent and removing it, from the browser to the database.</p>
+            <p class="strength-tech">Caching · Async processing · Query &amp; frontend optimization</p>
           </li>
           <li class="strength reveal">
             <span class="strength-num">05</span>
             <h3>Security</h3>
-            <p>Implementing JWT authentication with refresh-token handling, so API access stays secure while sessions behave predictably for users.</p>
-            <p class="strength-tech">Spring Security · JWT · Refresh Tokens</p>
+            <p>Secure API access with predictable session handling.</p>
+            <p class="strength-tech">Spring Security · JWT · Refresh tokens</p>
           </li>
           <li class="strength reveal">
             <span class="strength-num">06</span>
             <h3>Production Engineering</h3>
-            <p>Staying with the software after it ships: monitoring with Datadog and CloudWatch, investigating production issues, and supporting deployments.</p>
-            <p class="strength-tech">Datadog APM · RUM · Logs · CloudWatch</p>
+            <p>Staying with software after it ships &mdash; monitoring, troubleshooting, deployments.</p>
+            <p class="strength-tech">Datadog · CloudWatch · Observability</p>
           </li>
         </ol>
       </div>
     </section>
 
-    <!-- ============ EXPERIENCE ============ -->
+    <!-- ============ EXPERIENCE — the main proof ============ -->
     <section class="section section-alt" id="experience" aria-labelledby="experience-title">
       <div class="container">
         <header class="section-head reveal">
@@ -240,26 +273,21 @@
                 <p class="role-project">Project: <strong>ZeroNorth – eBDN</strong></p>
               </header>
               <ul class="tags" aria-label="Technologies">
-                <li>Java 21</li><li>Spring Boot 3</li><li>Angular 17</li><li>PostgreSQL</li><li>AWS</li><li>Datadog</li><li>ArgoCD</li><li>IndexedDB</li><li>JWT</li><li>GitHub Actions</li><li>Snowflake</li>
+                <li class="is-primary">Java 21</li><li class="is-primary">Spring Boot 3</li><li>Angular 17</li><li>PostgreSQL</li><li>AWS</li><li>Datadog</li><li>ArgoCD</li><li>IndexedDB</li><li>JWT</li><li>GitHub Actions</li><li>Snowflake</li>
               </ul>
-              <div class="metrics">
-                <div class="metric"><span class="metric-val">~30%</span><span class="metric-label">frontend performance improvement</span></div>
-                <div class="metric"><span class="metric-val">~50%</span><span class="metric-label">scrolling performance improvement</span></div>
-              </div>
-              <p class="metric-note">Approximate figures from optimizing Angular component rendering and API interactions.</p>
               <ul class="bullets">
-                <li>Designed and implemented <strong>multi-tenant data access</strong> in Spring Boot using <code>AbstractRoutingDataSource</code>, tenant context propagation and dynamic datasource routing for tenant-specific data isolation.</li>
-                <li>Developed and integrated <strong>Spring Boot REST APIs</strong> consumed by Angular applications to support end-to-end business workflows.</li>
-                <li>Implemented <strong>IndexedDB-based client-side caching</strong> for frequently accessed data, reducing repeated backend API calls and improving offline usability.</li>
+                <li>Designed and implemented <strong>multi-tenant data access</strong> using <code>AbstractRoutingDataSource</code>, tenant context propagation and dynamic datasource routing for tenant-specific data isolation.</li>
+                <li>Optimized <strong>Angular component rendering and API interactions</strong> &mdash; <span class="pill">~30% frontend</span> and <span class="pill">~50% scrolling</span> performance improvement.</li>
+                <li>Implemented <strong>IndexedDB-based client-side caching</strong>, reducing repeated backend API calls and improving offline usability.</li>
+                <li>Contributed to migrating infrastructure from <strong>on-premise VMs to AWS</strong>, with solution architects.</li>
+                <li>Implemented <strong>JWT authentication and refresh tokens</strong> for secure API access and session handling.</li>
+                <li>Monitored production with <strong>Datadog APM, RUM and logs</strong>; supported <strong>CI/CD with GitHub Actions and ArgoCD</strong>.</li>
               </ul>
               <details class="more">
                 <summary><span class="more-open">Show all contributions</span><span class="more-close">Show less</span></summary>
                 <ul class="bullets">
-                  <li>Contributed to migration of application infrastructure from <strong>on-premise VMs to AWS</strong> in collaboration with solution architects.</li>
+                  <li>Developed and integrated <strong>Spring Boot REST APIs</strong> consumed by Angular applications to support end-to-end business workflows.</li>
                   <li>Developed reusable <strong>Angular standalone utilities</strong> and shared UI components for validation and workflow indicators.</li>
-                  <li>Implemented <strong>JWT authentication and refresh-token</strong> mechanisms for secure API access and session handling.</li>
-                  <li>Used <strong>Datadog APM, RUM and logs</strong> to monitor application performance, investigate production issues and identify bottlenecks.</li>
-                  <li>Supported CI/CD and deployment workflows using <strong>GitHub Actions and ArgoCD</strong>.</li>
                 </ul>
               </details>
             </article>
@@ -276,20 +304,20 @@
                 <p class="role-project">Project: <strong>British Telecom (BT)</strong></p>
               </header>
               <ul class="tags" aria-label="Technologies">
-                <li>Java</li><li>Spring Boot</li><li>GraphQL</li><li>PostgreSQL</li><li>AWS ECS</li><li>CloudWatch</li>
+                <li class="is-primary">Java</li><li class="is-primary">Spring Boot</li><li>GraphQL</li><li>PostgreSQL</li><li>AWS ECS</li><li>CloudWatch</li>
               </ul>
               <ul class="bullets">
-                <li>Developed and maintained <strong>REST APIs</strong> using Java and Spring Boot to support enterprise business workflows.</li>
+                <li>Developed and maintained <strong>Spring Boot REST APIs</strong> for enterprise business workflows.</li>
                 <li>Developed <strong>GraphQL queries and mutations</strong> for frontend integration and data retrieval.</li>
-                <li>Designed and implemented <strong>global search</strong> supporting filtering across multiple attributes and datasets.</li>
+                <li>Integrated backend services with <strong>external microservices</strong> over REST and GraphQL.</li>
+                <li>Designed and implemented <strong>global search</strong> with filtering across multiple attributes and datasets.</li>
+                <li>Optimized <strong>report generation</strong> with asynchronous processing, materialized views and database query optimization to improve response time.</li>
               </ul>
               <details class="more">
                 <summary><span class="more-open">Show all contributions</span><span class="more-close">Show less</span></summary>
                 <ul class="bullets">
-                  <li>Integrated backend services with <strong>external microservices</strong> using REST APIs and GraphQL-based communication.</li>
-                  <li>Optimized <strong>report-generation workflows</strong> using asynchronous processing, materialized views and database query optimization to improve application response time.</li>
+                  <li>Monitored <strong>AWS ECS</strong> tasks through <strong>CloudWatch</strong> logs, investigated production issues and supported deployment troubleshooting.</li>
                   <li>Collaborated with frontend developers to design APIs and backend workflows aligned with application requirements.</li>
-                  <li>Monitored <strong>AWS ECS</strong> tasks through CloudWatch logs, investigated production issues and supported deployment troubleshooting.</li>
                 </ul>
               </details>
             </article>
@@ -298,13 +326,12 @@
       </div>
     </section>
 
-    <!-- ============ PROJECTS ============ -->
+    <!-- ============ PROJECTS — the systems ============ -->
     <section class="section" id="projects" aria-labelledby="projects-title">
       <div class="container">
         <header class="section-head reveal">
-          <p class="kicker">Selected work</p>
-          <h2 id="projects-title">Projects</h2>
-          <p class="section-sub">Client programs I've worked on, and an open-source package I maintain.</p>
+          <p class="kicker">Selected projects</p>
+          <h2 id="projects-title">The systems behind the work</h2>
         </header>
 
         <article class="project project-feature reveal" aria-labelledby="p-ebdn">
@@ -316,110 +343,99 @@
               transfer operations. It captures bunkering data and generates digitally signed BDN reports
               for submission to the Singapore Maritime and Port Authority.
             </p>
-            <dl class="project-points">
-              <div><dt>Multi-tenancy</dt><dd>Tenant-specific data isolation via <code>AbstractRoutingDataSource</code>, tenant context propagation and dynamic datasource routing.</dd></div>
-              <div><dt>APIs &amp; UI</dt><dd>Spring Boot REST APIs consumed by Angular 17, with reusable standalone utilities and shared components.</dd></div>
-              <div><dt>Caching &amp; offline</dt><dd>IndexedDB caching for frequently accessed data &mdash; fewer repeated API calls, better offline usability.</dd></div>
-              <div><dt>Security</dt><dd>JWT authentication with refresh-token handling.</dd></div>
-              <div><dt>Platform</dt><dd>Contributed to the on-premise VM → AWS migration; CI/CD via GitHub Actions and ArgoCD; Datadog APM, RUM and logs.</dd></div>
-              <div><dt>Performance</dt><dd>~30% frontend and ~50% scrolling performance improvement from rendering and API-interaction optimization.</dd></div>
-            </dl>
+            <div class="supporting">
+              <p class="supporting-title">Supporting components</p>
+              <dl class="supporting-list">
+                <div><dt>IndexedDB</dt><dd>client-side cache, offline use</dd></div>
+                <div><dt>JWT</dt><dd>auth with refresh tokens</dd></div>
+                <div><dt>Datadog</dt><dd>APM · RUM · logs</dd></div>
+                <div><dt>GitHub Actions</dt><dd>CI</dd></div>
+                <div><dt>ArgoCD</dt><dd>deployment</dd></div>
+              </dl>
+            </div>
           </div>
-          <aside class="project-diagram" aria-label="Architecture outline">
-            <p class="diagram-title">Architecture outline</p>
-            <ol class="layers">
-              <li><span>Client</span>Angular 17 · IndexedDB cache</li>
-              <li><span>Auth</span>JWT · refresh tokens</li>
-              <li><span>Service</span>Spring Boot 3 · Java 21 REST APIs</li>
-              <li><span>Data</span>Tenant-routed PostgreSQL · Snowflake</li>
-              <li><span>Ops</span>AWS · GitHub Actions · ArgoCD · Datadog</li>
-            </ol>
-          </aside>
+
+          <figure class="sysmap" aria-labelledby="sysmap-cap">
+            <figcaption id="sysmap-cap" class="diagram-title">Architecture · request path</figcaption>
+            <div class="flow">
+              <div class="flow-step"><span class="flow-kind">Client</span><strong>Angular 17</strong><em>IndexedDB cache</em></div>
+              <div class="flow-arrow" aria-hidden="true"><span>JWT · REST</span></div>
+              <div class="aws-box">
+                <p class="aws-label">AWS <span>&middot; migrated from on-premise VMs</span></p>
+                <ol class="flow-inner">
+                  <li class="flow-step flow-accent"><span class="flow-kind">API</span><strong>Spring Boot 3</strong><em>Java 21 REST APIs</em></li>
+                  <li class="flow-step"><span class="flow-kind">Context</span><strong>Tenant context</strong><em>propagated per request</em></li>
+                  <li class="flow-step"><span class="flow-kind">Routing</span><strong>AbstractRoutingDataSource</strong><em>dynamic datasource routing</em></li>
+                  <li class="flow-step"><span class="flow-kind">Data</span><strong>PostgreSQL</strong><em>tenant-specific data</em></li>
+                </ol>
+              </div>
+            </div>
+          </figure>
         </article>
 
-        <div class="project-row">
-          <article class="project reveal" aria-labelledby="p-bt">
+        <article class="project project-bt reveal" aria-labelledby="p-bt">
+          <div class="project-main">
             <p class="project-label">TCS · 2021 – 2023</p>
             <h3 id="p-bt">British Telecom (BT)</h3>
             <p class="project-desc">
-              Enterprise application development for British Telecom, focused on backend services, frontend
-              integration, search, reporting and microservice communication.
+              Enterprise application for British Telecom: backend services, frontend integration, search,
+              reporting and communication with other microservices.
             </p>
-            <ul class="checklist">
-              <li>Spring Boot REST APIs for enterprise business workflows</li>
-              <li>GraphQL queries and mutations for frontend data retrieval</li>
-              <li>Service-to-service integration over REST and GraphQL</li>
-              <li>Global search with filtering across multiple attributes and datasets</li>
-              <li>Faster reports via async processing, materialized views and PostgreSQL query optimization</li>
-              <li>AWS ECS tasks monitored through CloudWatch logs</li>
-            </ul>
-            <ul class="tags" aria-label="Technologies">
-              <li>Java</li><li>Spring Boot</li><li>GraphQL</li><li>PostgreSQL</li><li>AWS ECS</li><li>CloudWatch</li>
-            </ul>
-          </article>
-
-          <article class="project project-oss reveal" id="open-source" aria-labelledby="p-oss">
-            <p class="project-label">Open source · Angular · npm</p>
-            <h3 id="p-oss"><code>required-field-marker</code></h3>
-            <p class="project-desc">
-              Reusable Angular form-field validation and error indication. A lightweight standalone directive
-              that automatically marks required form fields with a custom indicator &mdash; so forms stay
-              consistent without per-field markup.
-            </p>
-            <pre class="snippet" aria-label="Install command"><code><span class="prompt" aria-hidden="true">$</span> npm install required-field-marker</code></pre>
-            <p class="oss-meta" id="npm-meta" hidden></p>
-            <div class="project-actions">
-              <a class="btn btn-primary btn-sm" href="https://www.npmjs.com/package/required-field-marker" target="_blank" rel="noopener">View on npm</a>
-            </div>
-          </article>
-        </div>
+          </div>
+          <ul class="capabilities" aria-label="System capabilities">
+            <li><span>Interface</span>REST + GraphQL</li>
+            <li><span>Integration</span>Microservice communication</li>
+            <li><span>Search</span>Global, multi-attribute</li>
+            <li><span>Reporting</span>Async processing · materialized views</li>
+            <li><span>Data</span>PostgreSQL</li>
+            <li><span>Runtime</span>AWS ECS · CloudWatch</li>
+          </ul>
+        </article>
       </div>
     </section>
 
-    <!-- ============ HIGHLIGHTS ============ -->
-    <section class="section section-alt" id="highlights" aria-labelledby="highlights-title">
+    <!-- ============ ENGINEERING STORIES — depth ============ -->
+    <section class="section section-alt" id="stories" aria-labelledby="stories-title">
       <div class="container">
         <header class="section-head reveal">
-          <p class="kicker">Depth</p>
-          <h2 id="highlights-title">Engineering highlights</h2>
-          <p class="section-sub">The problems I've worked on that go beyond building CRUD screens.</p>
+          <p class="kicker">Engineering stories</p>
+          <h2 id="stories-title">Problems, approaches, results</h2>
         </header>
-        <div class="highlights">
-          <article class="highlight reveal">
-            <h3>Multi-tenant systems</h3>
-            <p>Dynamic datasource routing and tenant context propagation in Spring Boot, keeping each tenant's data isolated behind one application.</p>
+        <div class="stories">
+          <article class="story reveal">
+            <h3>Multi-tenant data access</h3>
+            <dl>
+              <div><dt>Problem</dt><dd>Multiple tenants need isolated data access within one application.</dd></div>
+              <div><dt>Approach</dt><dd>Tenant context + <code>AbstractRoutingDataSource</code> + dynamic datasource routing.</dd></div>
+              <div><dt>Result</dt><dd>Tenant-specific data isolation inside the Spring Boot application.</dd></div>
+            </dl>
           </article>
-          <article class="highlight reveal">
-            <h3>Performance engineering</h3>
-            <p>Angular rendering optimization, IndexedDB caching, asynchronous report generation, materialized views and query optimization.</p>
+          <article class="story reveal">
+            <h3>Frontend performance</h3>
+            <dl>
+              <div><dt>Problem</dt><dd>Rendering, scrolling and repeated API calls hurt the user experience.</dd></div>
+              <div><dt>Approach</dt><dd>Angular rendering optimization, IndexedDB caching and leaner API interactions.</dd></div>
+              <div><dt>Result</dt><dd><strong>~30%</strong> frontend and <strong>~50%</strong> scrolling performance improvement.</dd></div>
+            </dl>
           </article>
-          <article class="highlight reveal">
-            <h3>Cloud migration</h3>
-            <p>Contributed, alongside solution architects, to moving application infrastructure from on-premise VMs to AWS.</p>
-          </article>
-          <article class="highlight reveal">
+          <article class="story reveal">
             <h3>Production observability</h3>
-            <p>Datadog APM, RUM and logs, and AWS CloudWatch &mdash; used to find bottlenecks and investigate live issues.</p>
-          </article>
-          <article class="highlight reveal">
-            <h3>Secure APIs</h3>
-            <p>JWT authentication and refresh-token mechanisms for secure API access and session handling.</p>
-          </article>
-          <article class="highlight reveal">
-            <h3>Modern full stack</h3>
-            <p>Current production work on Java 21, Spring Boot 3 and Angular 17 with standalone components.</p>
+            <dl>
+              <div><dt>Problem</dt><dd>Production issues need visibility into behavior and bottlenecks.</dd></div>
+              <div><dt>Approach</dt><dd>Datadog APM, RUM and logs; AWS CloudWatch for ECS workloads.</dd></div>
+              <div><dt>Result</dt><dd>Faster investigation of production issues and bottlenecks.</dd></div>
+            </dl>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- ============ SKILLS ============ -->
+    <!-- ============ SKILLS — reference ============ -->
     <section class="section" id="skills" aria-labelledby="skills-title">
       <div class="container">
         <header class="section-head reveal">
           <p class="kicker">Toolbox</p>
           <h2 id="skills-title">Technical skills</h2>
-          <p class="section-sub">Technologies I've used in professional, production work.</p>
         </header>
         <div class="skills">
           <div class="skill-group skill-group-lg reveal">
@@ -458,26 +474,42 @@
       </div>
     </section>
 
-    <!-- ============ ABOUT + EDUCATION ============ -->
-    <section class="section section-alt" id="about" aria-labelledby="about-title">
+    <!-- ============ OPEN SOURCE ============ -->
+    <section class="section section-alt section-tight" id="open-source" aria-labelledby="oss-title">
+      <div class="container">
+        <article class="oss reveal" aria-labelledby="oss-title">
+          <div class="oss-copy">
+            <p class="kicker">Open source · Angular · npm</p>
+            <h2 id="oss-title"><code>required-field-marker</code></h2>
+            <p class="oss-desc">
+              Reusable Angular form-field validation and error indication &mdash; a lightweight standalone
+              directive that automatically marks required form fields with a custom indicator.
+            </p>
+          </div>
+          <div class="oss-side">
+            <pre class="snippet" aria-label="Install command"><code><span class="prompt" aria-hidden="true">$</span> npm install required-field-marker</code></pre>
+            <div class="oss-actions">
+              <a class="btn btn-primary btn-sm" href="https://www.npmjs.com/package/required-field-marker" target="_blank" rel="noopener">View on npm</a>
+              <span class="oss-meta" id="npm-meta" hidden></span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="section" id="about" aria-labelledby="about-title">
       <div class="container about">
         <div class="about-copy reveal">
           <p class="kicker">About</p>
           <h2 id="about-title">Backend-first, full-stack in practice</h2>
           <p>
-            I'm a Java Full Stack Developer with 4.5+ years of experience on enterprise web applications.
-            Most of my work sits in the backend &mdash; Java and Spring Boot services, REST and GraphQL APIs,
-            and PostgreSQL &mdash; and I build the Angular frontends that consume them.
+            I'm a Java Full Stack Developer with 4.5+ years on enterprise applications. My core is Java and
+            Spring Boot with PostgreSQL; I build the Angular frontends too, and deploy on AWS.
           </p>
           <p>
-            At WCS I work on ZeroNorth's eBDN platform, where I built multi-tenant data access with dynamic
-            datasource routing, implemented JWT and refresh-token security, added IndexedDB caching, and
-            contributed to the move from on-premise VMs to AWS. Before that, at TCS, I spent two years on
-            British Telecom's platform building APIs, global search and faster report generation.
-          </p>
-          <p>
-            I care about what happens after the merge: performance, monitoring with Datadog and CloudWatch,
-            and supporting production when something breaks.
+            I care about what happens after the merge &mdash; performance, security, and being able to see
+            and fix what's going on in production.
           </p>
         </div>
         <aside class="education reveal" aria-labelledby="edu-title">
@@ -492,11 +524,10 @@
     </section>
 
     <!-- ============ CONTACT ============ -->
-    <section class="section contact" id="contact" aria-labelledby="contact-title">
+    <section class="section section-alt contact" id="contact" aria-labelledby="contact-title">
       <div class="container contact-inner reveal">
         <p class="kicker">Contact</p>
         <h2 id="contact-title">Have a project, opportunity, or technical problem to discuss?</h2>
-        <p class="section-sub">I'm happy to talk about Java, Spring Boot and Angular roles, or anything on this page.</p>
         <a class="contact-email" href="mailto:syamchenchugalla2709@gmail.com">syamchenchugalla2709@gmail.com</a>
         <ul class="contact-links">
           <li><a class="btn btn-primary" href="mailto:syamchenchugalla2709@gmail.com">Email me</a></li>
@@ -512,7 +543,7 @@
   <footer class="site-footer">
     <div class="container footer-inner">
       <p>&copy; <span id="year">2026</span> Syam Kumar Chenchugalla · Hyderabad, India</p>
-      <p><a href="#top">Back to top ↑</a></p>
+      <p><a href="#home">Back to top ↑</a></p>
     </div>
   </footer>
 

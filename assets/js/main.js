@@ -107,17 +107,60 @@
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
-  /* ---- Reveal on scroll + active nav link ---- */
+  /* ---- Reveal on scroll (with stagger), timeline draw, metric count-up, active nav link ---- */
+  var motionOK = !(reduceMotion && reduceMotion.matches);
+
+  // Siblings in a grid reveal one after another
+  [".metrics", ".strengths", ".skills", ".timeline"].forEach(function (sel) {
+    var group = document.querySelector(sel);
+    if (!group) return;
+    group.querySelectorAll(":scope > .reveal").forEach(function (el, i) {
+      el.style.setProperty("--stagger", Math.min(i, 6) * 80 + "ms");
+    });
+  });
+
+  function countUp(el) {
+    var to = parseFloat(el.getAttribute("data-to"));
+    var dec = parseInt(el.getAttribute("data-dec") || "0", 10);
+    if (!motionOK || isNaN(to)) return;
+    var start = null, dur = 1100;
+    el.textContent = (0).toFixed(dec);
+    function step(t) {
+      if (start === null) start = t;
+      var p = Math.min((t - start) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = (to * eased).toFixed(dec);
+      if (p < 1) requestAnimationFrame(step);
+      else el.textContent = to.toFixed(dec);
+    }
+    requestAnimationFrame(step);
+  }
+
+  function onRevealed(el) {
+    el.classList.add("is-visible");
+    el.querySelectorAll(".num[data-to]").forEach(countUp);
+    // drop the stagger delay once the entrance has played, so hover feels immediate
+    setTimeout(function () { el.classList.add("is-settled"); }, 900);
+  }
+
   if ("IntersectionObserver" in window) {
     var revealer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
+          onRevealed(entry.target);
           revealer.unobserve(entry.target);
         }
       });
     }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
     document.querySelectorAll(".reveal").forEach(function (el) { revealer.observe(el); });
+
+    var timeline = document.querySelector(".timeline");
+    if (timeline) {
+      var drawer = new IntersectionObserver(function (entries) {
+        if (entries[0].isIntersecting) { timeline.classList.add("is-drawn"); drawer.disconnect(); }
+      }, { threshold: 0.15 });
+      drawer.observe(timeline);
+    }
 
     var links = {};
     document.querySelectorAll(".nav-links a").forEach(function (a) {
@@ -138,6 +181,8 @@
     document.querySelectorAll("main section[id]").forEach(function (s) { spy.observe(s); });
   } else {
     document.querySelectorAll(".reveal").forEach(function (el) { el.classList.add("is-visible"); });
+    var tl = document.querySelector(".timeline");
+    if (tl) tl.classList.add("is-drawn");
   }
 
   /* ---- Live npm metadata (optional; hidden if the request fails) ---- */

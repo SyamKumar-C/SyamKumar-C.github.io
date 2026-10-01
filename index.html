@@ -100,9 +100,12 @@
   </header>
 
   <main id="main">
-    <!-- ============ HERO — who I am ============ -->
+    <!-- ============ HERO ============ -->
     <section class="hero" id="home" aria-labelledby="hero-title">
-      <div class="hero-grid-bg" aria-hidden="true"></div>
+      <div class="hero-bg" aria-hidden="true">
+        <span class="blob blob-a"></span><span class="blob blob-b"></span><span class="blob blob-c"></span>
+        <span class="hero-grid-bg"></span>
+      </div>
       <div class="container hero-inner">
         <div class="hero-copy">
           <p class="eyebrow hero-anim" style="--d:0">
@@ -117,15 +120,18 @@
           </p>
           <div class="hero-stack hero-anim" style="--d:3">
             <ul class="stack-primary" aria-label="Primary stack">
-              <li>Java</li>
-              <li>Spring Boot</li>
+              <li class="t-java"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-java"/></svg>Java</li>
+              <li class="t-spring"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-spring"/></svg>Spring Boot</li>
             </ul>
             <ul class="stack-secondary" aria-label="Also working with">
-              <li>Angular</li><li>PostgreSQL</li><li>AWS</li><li>GraphQL</li>
+              <li class="t-angular"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-angular"/></svg>Angular</li>
+              <li class="t-pg"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-postgresql"/></svg>PostgreSQL</li>
+              <li class="t-aws"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-aws"/></svg>AWS</li>
+              <li class="t-graphql"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-graphql"/></svg>GraphQL</li>
             </ul>
           </div>
           <div class="hero-cta hero-anim" style="--d:4">
-            <a class="btn btn-primary" href="#projects">View My Work</a>
+            <a class="btn btn-primary" href="#projects">View My Work <svg class="ti ui" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#u-arrow"/></svg></a>
             <a class="btn btn-outline" href="assets/Syam-Kumar-Chenchugalla-Resume.pdf" download>
               <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3v12m0 0-4.5-4.5M12 15l4.5-4.5M4 19h16"/></svg>
               Download Resume
@@ -148,65 +154,53 @@
           </ul>
         </div>
 
-        <!-- Architecture panel: abstract representation of the request path the work spans -->
-        <figure class="arch hero-anim" style="--d:3" aria-label="Request flow across the stack: Angular client to Spring Boot API to tenant-routed PostgreSQL on AWS">
-          <div class="arch-bar" aria-hidden="true">
-            <span></span><span></span><span></span>
-            <code>request-path.flow</code>
-          </div>
-          <div class="arch-body" aria-hidden="true">
-            <div class="arch-node">
-              <span class="arch-tag">client</span>
-              <strong>Angular 17</strong>
-              <small>standalone components · IndexedDB cache</small>
-            </div>
-            <div class="arch-link"><span class="arch-label">JWT · REST</span></div>
-            <div class="arch-node arch-node-accent">
-              <span class="arch-tag">api</span>
-              <strong>Spring Boot 3 · Java 21</strong>
-              <small>Spring Security · refresh tokens</small>
-            </div>
-            <div class="arch-link"><span class="arch-label">tenant context</span></div>
-            <div class="arch-node">
-              <span class="arch-tag">routing</span>
-              <strong>AbstractRoutingDataSource</strong>
-              <small>dynamic datasource per tenant</small>
-            </div>
-            <div class="arch-split">
-              <div class="arch-db"><span>PostgreSQL</span><small>tenant&nbsp;A</small></div>
-              <div class="arch-db"><span>PostgreSQL</span><small>tenant&nbsp;B</small></div>
-            </div>
-            <div class="arch-foot">
-              <span>AWS</span><span>GitHub Actions</span><span>ArgoCD</span><span>Datadog</span>
-            </div>
-          </div>
-          <figcaption class="sr-only">Simplified view of the stack used on the ZeroNorth eBDN project.</figcaption>
+        <!-- Hero illustration: the request path the work spans, with surrounding tools -->
+        <figure class="hero-visual hero-anim" style="--d:3" role="img"
+                aria-label="Illustration of the stack: Angular client, Spring Boot APIs, API security, PostgreSQL and AWS, surrounded by related tools">
+          <div class="hv-halo" aria-hidden="true"></div>
+          <div class="hv-track" aria-hidden="true"><i></i><i></i><i></i></div>
+          <ol class="hv-stack" aria-hidden="true">
+            <li class="hv-node t-angular" style="--n:0"><span class="hv-ico"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-angular"/></svg></span><span class="hv-txt"><b>Angular 17</b><small>Client · standalone components</small></span></li>
+            <li class="hv-node t-spring" style="--n:1"><span class="hv-ico"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-spring"/></svg></span><span class="hv-txt"><b>Spring Boot 3</b><small>REST APIs · Java 21</small></span></li>
+            <li class="hv-node t-violet" style="--n:2"><span class="hv-ico"><svg class="ti ui" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#u-shield"/></svg></span><span class="hv-txt"><b>API Security</b><small>JWT · refresh tokens</small></span></li>
+            <li class="hv-node t-pg" style="--n:3"><span class="hv-ico"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-postgresql"/></svg></span><span class="hv-txt"><b>PostgreSQL</b><small>tenant-routed datasources</small></span></li>
+            <li class="hv-node t-aws" style="--n:4"><span class="hv-ico"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-aws"/></svg></span><span class="hv-txt"><b>AWS</b><small>cloud infrastructure</small></span></li>
+          </ol>
+          <span class="hv-float f1 t-java" aria-hidden="true"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-java"/></svg></span>
+          <span class="hv-float f2 t-graphql" aria-hidden="true"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-graphql"/></svg></span>
+          <span class="hv-float f3 t-ts" aria-hidden="true"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-typescript"/></svg></span>
+          <span class="hv-float f4 t-gha" aria-hidden="true"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-githubactions"/></svg></span>
+          <span class="hv-float f5 t-dd" aria-hidden="true"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-datadog"/></svg></span>
+          <span class="hv-float f6 t-argo" aria-hidden="true"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-argo"/></svg></span>
         </figure>
       </div>
     </section>
 
-    <!-- ============ KEY METRICS — evidence ============ -->
+    <!-- ============ KEY METRICS ============ -->
     <section class="metrics-band" aria-label="Key metrics">
       <div class="container">
-        <dl class="metrics reveal">
-          <div class="metric">
+        <dl class="metrics">
+          <div class="metric-card t-cloud reveal">
+            <span class="metric-ico" aria-hidden="true"><svg class="ti ui" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#u-clock"/></svg></span>
             <dt class="metric-label">Years experience</dt>
-            <dd class="metric-val">4.5<span class="affix">+</span></dd>
+            <dd class="metric-val"><span class="num" data-to="4.5" data-dec="1">4.5</span><span class="affix">+</span></dd>
           </div>
-          <div class="metric">
+          <div class="metric-card t-angular reveal">
+            <span class="metric-ico" aria-hidden="true"><svg class="ti ui" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#u-gauge"/></svg></span>
             <dt class="metric-label">Frontend performance</dt>
-            <dd class="metric-val"><span class="affix">~</span>30<span class="affix">%</span></dd>
+            <dd class="metric-val"><span class="affix">~</span><span class="num" data-to="30">30</span><span class="affix">%</span></dd>
           </div>
-          <div class="metric">
+          <div class="metric-card t-spring reveal">
+            <span class="metric-ico" aria-hidden="true"><svg class="ti ui" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#u-scroll"/></svg></span>
             <dt class="metric-label">Scrolling performance</dt>
-            <dd class="metric-val"><span class="affix">~</span>50<span class="affix">%</span></dd>
+            <dd class="metric-val"><span class="affix">~</span><span class="num" data-to="50">50</span><span class="affix">%</span></dd>
           </div>
         </dl>
         <p class="metrics-note">Performance improvements are approximate, from Angular rendering and API-interaction optimization on ZeroNorth eBDN.</p>
       </div>
     </section>
 
-    <!-- ============ WHAT I BUILD — strengths ============ -->
+    <!-- ============ WHAT I BUILD ============ -->
     <section class="section" id="strengths" aria-labelledby="strengths-title">
       <div class="container">
         <header class="section-head reveal">
@@ -214,37 +208,43 @@
           <h2 id="strengths-title">Engineering strengths</h2>
         </header>
         <ol class="strengths">
-          <li class="strength reveal">
+          <li class="strength t-spring reveal">
+            <span class="strength-ico" aria-hidden="true"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-spring"/></svg></span>
             <span class="strength-num">01</span>
             <h3>Backend Engineering</h3>
             <p>Spring Boot services with clean API contracts other teams can rely on.</p>
             <p class="strength-tech">REST · GraphQL · JPA/Hibernate · Microservice communication</p>
           </li>
-          <li class="strength reveal">
+          <li class="strength t-angular reveal">
+            <span class="strength-ico" aria-hidden="true"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-angular"/></svg></span>
             <span class="strength-num">02</span>
             <h3>Full-Stack Applications</h3>
             <p>Features end to end &mdash; the API and the Angular screen that uses it.</p>
             <p class="strength-tech">Angular · TypeScript · RxJS · Standalone components</p>
           </li>
-          <li class="strength reveal">
+          <li class="strength t-aws reveal">
+            <span class="strength-ico" aria-hidden="true"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-aws"/></svg></span>
             <span class="strength-num">03</span>
             <h3>Cloud &amp; DevOps</h3>
             <p>Running on AWS and shipping through automated pipelines.</p>
             <p class="strength-tech">AWS · CI/CD · GitHub Actions · ArgoCD</p>
           </li>
-          <li class="strength reveal">
+          <li class="strength t-cloud reveal">
+            <span class="strength-ico" aria-hidden="true"><svg class="ti ui" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#u-zap"/></svg></span>
             <span class="strength-num">04</span>
             <h3>Performance &amp; Scalability</h3>
             <p>Finding where time is spent and removing it, from the browser to the database.</p>
             <p class="strength-tech">Caching · Async processing · Query &amp; frontend optimization</p>
           </li>
-          <li class="strength reveal">
+          <li class="strength t-violet reveal">
+            <span class="strength-ico" aria-hidden="true"><svg class="ti ui" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#u-shield"/></svg></span>
             <span class="strength-num">05</span>
             <h3>Security</h3>
             <p>Secure API access with predictable session handling.</p>
             <p class="strength-tech">Spring Security · JWT · Refresh tokens</p>
           </li>
-          <li class="strength reveal">
+          <li class="strength t-dd reveal">
+            <span class="strength-ico" aria-hidden="true"><svg class="ti ui" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#u-activity"/></svg></span>
             <span class="strength-num">06</span>
             <h3>Production Engineering</h3>
             <p>Staying with software after it ships &mdash; monitoring, troubleshooting, deployments.</p>
@@ -254,7 +254,7 @@
       </div>
     </section>
 
-    <!-- ============ EXPERIENCE — the main proof ============ -->
+    <!-- ============ EXPERIENCE ============ -->
     <section class="section section-alt" id="experience" aria-labelledby="experience-title">
       <div class="container">
         <header class="section-head reveal">
@@ -265,6 +265,7 @@
         <ol class="timeline">
           <li class="role reveal">
             <div class="role-meta">
+              <span class="role-badge t-cloud" aria-hidden="true">WCS</span>
               <p class="role-dates"><time datetime="2024-02">Feb 2024</time> – Present</p>
               <p class="role-loc">Hyderabad, India</p>
             </div>
@@ -273,12 +274,16 @@
                 <h3>Java Full Stack Developer <span class="at">@ WCS</span></h3>
                 <p class="role-project">Project: <strong>ZeroNorth – eBDN</strong></p>
               </header>
-              <ul class="tags" aria-label="Technologies">
-                <li class="is-primary">Java 21</li><li class="is-primary">Spring Boot 3</li><li>Angular 17</li><li>PostgreSQL</li><li>AWS</li><li>Datadog</li><li>ArgoCD</li><li>IndexedDB</li><li>JWT</li><li>GitHub Actions</li><li>Snowflake</li>
+              <ul class="tags tech-tags" aria-label="Technologies">
+                <li class="is-primary t-java"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-java"/></svg>Java 21</li><li class="is-primary t-spring"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-spring"/></svg>Spring Boot 3</li><li class="t-angular"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-angular"/></svg>Angular 17</li><li class="t-pg"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-postgresql"/></svg>PostgreSQL</li><li class="t-aws"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-aws"/></svg>AWS</li><li class="t-dd"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-datadog"/></svg>Datadog</li><li class="t-argo"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-argo"/></svg>ArgoCD</li><li class="t-cloud"><svg class="ti ui" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#u-database"/></svg>IndexedDB</li><li class="t-violet"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-jwt"/></svg>JWT</li><li class="t-gha"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-githubactions"/></svg>GitHub Actions</li><li class="t-snow"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-snowflake"/></svg>Snowflake</li>
               </ul>
+              <div class="wins">
+                <div class="win t-angular"><span class="win-val">~30%</span><span class="win-label">Frontend performance</span></div>
+                <div class="win t-spring"><span class="win-val">~50%</span><span class="win-label">Scrolling performance</span></div>
+              </div>
               <ul class="bullets">
                 <li>Designed and implemented <strong>multi-tenant data access</strong> using <code>AbstractRoutingDataSource</code>, tenant context propagation and dynamic datasource routing for tenant-specific data isolation.</li>
-                <li>Optimized <strong>Angular component rendering and API interactions</strong> &mdash; <span class="pill">~30% frontend</span> and <span class="pill">~50% scrolling</span> performance improvement.</li>
+                <li>Optimized <strong>Angular component rendering and API interactions</strong>, improving frontend performance by ~30% and scrolling performance by ~50%.</li>
                 <li>Implemented <strong>IndexedDB-based client-side caching</strong>, reducing repeated backend API calls and improving offline usability.</li>
                 <li>Contributed to migrating infrastructure from <strong>on-premise VMs to AWS</strong>, with solution architects.</li>
                 <li>Implemented <strong>JWT authentication and refresh tokens</strong> for secure API access and session handling.</li>
@@ -296,6 +301,7 @@
 
           <li class="role reveal">
             <div class="role-meta">
+              <span class="role-badge t-spring" aria-hidden="true">TCS</span>
               <p class="role-dates"><time datetime="2021-11">Nov 2021</time> – <time datetime="2023-10">Oct 2023</time></p>
               <p class="role-loc">Bangalore, India</p>
             </div>
@@ -304,8 +310,8 @@
                 <h3>Assistant Systems Engineer <span class="at">@ TCS</span></h3>
                 <p class="role-project">Project: <strong>British Telecom (BT)</strong></p>
               </header>
-              <ul class="tags" aria-label="Technologies">
-                <li class="is-primary">Java</li><li class="is-primary">Spring Boot</li><li>GraphQL</li><li>PostgreSQL</li><li>AWS ECS</li><li>CloudWatch</li>
+              <ul class="tags tech-tags" aria-label="Technologies">
+                <li class="is-primary t-java"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-java"/></svg>Java</li><li class="is-primary t-spring"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-spring"/></svg>Spring Boot</li><li class="t-graphql"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-graphql"/></svg>GraphQL</li><li class="t-pg"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-postgresql"/></svg>PostgreSQL</li><li class="t-aws"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-aws"/></svg>AWS ECS</li><li class="t-aws"><svg class="ti ui" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#u-activity"/></svg>CloudWatch</li>
               </ul>
               <ul class="bullets">
                 <li>Developed and maintained <strong>Spring Boot REST APIs</strong> for enterprise business workflows.</li>
@@ -327,8 +333,8 @@
       </div>
     </section>
 
-    <!-- ============ PROJECTS — the systems ============ -->
-    <section class="section" id="projects" aria-labelledby="projects-title">
+    <!-- ============ PROJECTS ============ -->
+    <section class="section section-projects" id="projects" aria-labelledby="projects-title">
       <div class="container">
         <header class="section-head reveal">
           <p class="kicker">Selected projects</p>
@@ -336,70 +342,126 @@
         </header>
 
         <article class="project project-feature reveal" aria-labelledby="p-ebdn">
-          <div class="project-main">
-            <p class="project-label">WCS · 2024 – Present</p>
-            <h3 id="p-ebdn">ZeroNorth – eBDN</h3>
-            <p class="project-desc">
-              Digital bunker delivery note application used by Cargo Officers during ship-to-ship fuel
-              transfer operations. It captures bunkering data and produces digitally signed BDN reports
-              for the Singapore Maritime and Port Authority.
-            </p>
-            <div class="supporting">
-              <p class="supporting-title">Supporting technologies</p>
-              <dl class="supporting-list">
-                <div><dt>IndexedDB</dt><dd>browser cache</dd></div>
-                <div><dt>JWT</dt><dd>API auth</dd></div>
-                <div><dt>Datadog</dt><dd>observability</dd></div>
-                <div><dt>GitHub Actions</dt><dd>CI</dd></div>
-                <div><dt>ArgoCD</dt><dd>deployment</dd></div>
-              </dl>
-            </div>
+          <div class="project-art art-maritime" aria-hidden="true">
+            <svg viewBox="0 0 800 160" preserveAspectRatio="xMidYMid slice">
+              <defs>
+                <linearGradient id="seaSky" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0b3b74"/><stop offset=".55" stop-color="#0a62c2"/><stop offset="1" stop-color="#0ea5e9"/></linearGradient>
+                <pattern id="seaGrid" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0v24" fill="none" stroke="#fff" stroke-opacity=".07"/></pattern>
+              </defs>
+              <rect width="800" height="160" fill="url(#seaSky)"/>
+              <rect width="800" height="160" fill="url(#seaGrid)"/>
+              <circle cx="660" cy="44" r="70" fill="#fff" opacity=".06"/>
+              <path class="wave w1" d="M0 118 C 80 108 160 128 240 118 S 400 108 480 118 640 128 720 118 800 112 880 118 V160 H0Z" fill="#fff" opacity=".10"/>
+              <path class="wave w2" d="M0 132 C 90 124 170 140 260 132 S 430 124 520 132 690 140 780 132 860 128 900 132 V160 H0Z" fill="#fff" opacity=".12"/>
+              <g fill="#fff" opacity=".9">
+                <path d="M196 104h120l-14 16H212z"/><rect x="236" y="88" width="40" height="16" rx="2" opacity=".8"/><rect x="252" y="76" width="10" height="12" opacity=".7"/>
+                <path d="M470 104h132l-14 16H486z"/><rect x="520" y="86" width="52" height="18" rx="2" opacity=".8"/><rect x="530" y="74" width="10" height="12" opacity=".7"/>
+              </g>
+              <path class="fuel-line" d="M300 100 C 360 66 420 66 486 100" fill="none" stroke="#7dd3fc" stroke-width="2.5" stroke-dasharray="6 7"/>
+              <circle class="fuel-dot" r="4" fill="#fff"><animateMotion dur="3.2s" repeatCount="indefinite" path="M300 100 C 360 66 420 66 486 100"/></circle>
+            </svg>
           </div>
 
-          <figure class="sysmap" aria-labelledby="sysmap-cap">
-            <figcaption id="sysmap-cap" class="diagram-title">Architecture</figcaption>
-            <div class="flow">
-              <div class="flow-step"><span class="flow-kind">Client</span><strong>Angular 17</strong><em>standalone components</em></div>
-              <div class="flow-arrow" aria-hidden="true"><span>JWT · REST</span></div>
-              <div class="aws-box">
-                <p class="aws-label">AWS</p>
-                <ol class="flow-inner">
-                  <li class="flow-step flow-accent"><span class="flow-kind">API</span><strong>Spring Boot APIs</strong><em>Java 21 · Spring Boot 3</em></li>
-                  <li class="flow-step"><span class="flow-kind">Context</span><strong>Tenant context</strong><em>resolved per request</em></li>
-                  <li class="flow-step"><span class="flow-kind">Routing</span><strong>AbstractRoutingDataSource</strong><em>dynamic datasource routing</em></li>
-                  <li class="flow-step"><span class="flow-kind">Data</span><strong>PostgreSQL</strong><em>tenant-specific data</em></li>
-                </ol>
+          <div class="project-body">
+            <div class="project-main">
+              <p class="project-label">WCS · 2024 – Present</p>
+              <h3 id="p-ebdn">ZeroNorth – eBDN</h3>
+              <p class="project-desc">
+                Digital bunker delivery note application used by Cargo Officers during ship-to-ship fuel
+                transfer operations. It captures bunkering data and produces digitally signed BDN reports
+                for the Singapore Maritime and Port Authority.
+              </p>
+              <div class="supporting">
+                <p class="supporting-title">Supporting technologies</p>
+                <dl class="supporting-list">
+                  <div class="t-cloud"><svg class="ti ui" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#u-database"/></svg><dt>IndexedDB</dt><dd>browser cache</dd></div>
+                  <div class="t-violet"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-jwt"/></svg><dt>JWT</dt><dd>API auth</dd></div>
+                  <div class="t-dd"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-datadog"/></svg><dt>Datadog</dt><dd>observability</dd></div>
+                  <div class="t-gha"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-githubactions"/></svg><dt>GitHub Actions</dt><dd>CI</dd></div>
+                  <div class="t-argo"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-argo"/></svg><dt>ArgoCD</dt><dd>deployment</dd></div>
+                </dl>
               </div>
             </div>
-          </figure>
+
+            <figure class="sysmap" aria-labelledby="sysmap-cap">
+              <figcaption id="sysmap-cap" class="diagram-title">Architecture <span>· hover or focus a layer for details</span></figcaption>
+              <div class="flow">
+                <div class="flow-step t-angular" tabindex="0" aria-describedby="tip-ng">
+                  <span class="flow-ico"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-angular"/></svg></span><span class="flow-kind">Client</span><strong>Angular 17</strong><em>standalone components</em>
+                  <span class="tip" role="tooltip" id="tip-ng">Frontend built with standalone components; frequently used data is cached in IndexedDB.</span>
+                </div>
+                <div class="flow-arrow" aria-hidden="true"><span>JWT · REST</span></div>
+                <div class="aws-box">
+                  <p class="aws-label"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-aws"/></svg>AWS <span>· migrated from on-premise VMs</span></p>
+                  <ol class="flow-inner">
+                    <li class="flow-step t-spring flow-accent" tabindex="0" aria-describedby="tip-api">
+                      <span class="flow-ico"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-spring"/></svg></span><span class="flow-kind">API</span><strong>Spring Boot APIs</strong><em>Java 21 · Spring Boot 3</em>
+                      <span class="tip" role="tooltip" id="tip-api">REST APIs consumed by the Angular app, secured with JWT and refresh tokens.</span>
+                    </li>
+                    <li class="flow-step t-cloud" tabindex="0" aria-describedby="tip-ctx">
+                      <span class="flow-ico"><svg class="ti ui" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#u-layers"/></svg></span><span class="flow-kind">Context</span><strong>Tenant context</strong><em>resolved per request</em>
+                      <span class="tip" role="tooltip" id="tip-ctx">Identifies the tenant for each request and propagates it through the call.</span>
+                    </li>
+                    <li class="flow-step t-violet" tabindex="0" aria-describedby="tip-ards">
+                      <span class="flow-ico"><svg class="ti ui" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#u-route"/></svg></span><span class="flow-kind">Routing</span><strong>AbstractRouting<wbr>DataSource</strong><em>dynamic datasource routing</em>
+                      <span class="tip" role="tooltip" id="tip-ards">Routes database operations to the datasource associated with the current tenant.</span>
+                    </li>
+                    <li class="flow-step t-pg" tabindex="0" aria-describedby="tip-pg">
+                      <span class="flow-ico"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-postgresql"/></svg></span><span class="flow-kind">Data</span><strong>PostgreSQL</strong><em>tenant-specific data</em>
+                      <span class="tip" role="tooltip" id="tip-pg">Each tenant's data stays isolated behind its own datasource.</span>
+                    </li>
+                  </ol>
+                </div>
+              </div>
+            </figure>
+          </div>
         </article>
 
         <article class="project project-bt reveal" aria-labelledby="p-bt">
-          <div class="project-main">
-            <p class="project-label">TCS · 2021 – 2023</p>
-            <h3 id="p-bt">British Telecom (BT)</h3>
-            <p class="project-desc">
-              Enterprise application for British Telecom &mdash; backend services exposed over REST and
-              GraphQL, integrated with other microservices.
-            </p>
+          <div class="project-art art-network" aria-hidden="true">
+            <svg viewBox="0 0 800 160" preserveAspectRatio="xMidYMid slice">
+              <defs>
+                <linearGradient id="netSky" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3b0764"/><stop offset=".5" stop-color="#7c3aed"/><stop offset="1" stop-color="#db2777"/></linearGradient>
+              </defs>
+              <rect width="800" height="160" fill="url(#netSky)"/>
+              <g stroke="#fff" stroke-opacity=".28" stroke-width="1.5" fill="none">
+                <path d="M90 60 220 110 360 50 500 104 640 56 740 112"/><path d="M220 110 300 140M360 50 420 20M500 104 560 140M640 56 700 22M90 60 40 120"/>
+              </g>
+              <g class="net-pulse" stroke="#fff" stroke-width="2" fill="none" stroke-dasharray="10 330"><path d="M90 60 220 110 360 50 500 104 640 56 740 112"/></g>
+              <g fill="#fff">
+                <circle cx="90" cy="60" r="6"/><circle cx="220" cy="110" r="7"/><circle cx="360" cy="50" r="8"/><circle cx="500" cy="104" r="7"/><circle cx="640" cy="56" r="6"/><circle cx="740" cy="112" r="5"/>
+                <circle cx="300" cy="140" r="3.5" opacity=".7"/><circle cx="420" cy="20" r="3.5" opacity=".7"/><circle cx="560" cy="140" r="3.5" opacity=".7"/><circle cx="700" cy="22" r="3.5" opacity=".7"/><circle cx="40" cy="120" r="3.5" opacity=".7"/>
+              </g>
+              <g transform="translate(580 92)" stroke="#fff" stroke-width="3" fill="none" opacity=".9"><circle cx="0" cy="0" r="16"/><path d="m12 12 14 14"/></g>
+            </svg>
           </div>
-          <ul class="capabilities" aria-label="System capabilities">
-            <li><span>API</span>REST APIs</li>
-            <li><span>API</span>GraphQL</li>
-            <li><span>Integration</span>Microservice communication</li>
-            <li><span>Search</span>Global search</li>
-            <li><span>Reporting</span>Asynchronous processing</li>
-            <li><span>Reporting</span>Materialized views</li>
-            <li><span>Data</span>PostgreSQL</li>
-            <li><span>Runtime</span>AWS ECS</li>
-            <li><span>Monitoring</span>CloudWatch</li>
-          </ul>
+          <div class="project-body">
+            <div class="project-main">
+              <p class="project-label">TCS · 2021 – 2023</p>
+              <h3 id="p-bt">British Telecom (BT)</h3>
+              <p class="project-desc">
+                Enterprise application for British Telecom &mdash; backend services exposed over REST and
+                GraphQL, integrated with other microservices.
+              </p>
+            </div>
+            <ul class="capabilities" aria-label="System capabilities">
+              <li class="t-spring"><svg class="ti ui" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#u-server"/></svg><span>API</span>REST APIs</li>
+              <li class="t-graphql"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-graphql"/></svg><span>API</span>GraphQL</li>
+              <li class="t-cloud"><svg class="ti ui" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#u-network"/></svg><span>Integration</span>Microservice communication</li>
+              <li class="t-violet"><svg class="ti ui" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#u-search"/></svg><span>Search</span>Global search</li>
+              <li class="t-argo"><svg class="ti ui" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#u-refresh"/></svg><span>Reporting</span>Asynchronous processing</li>
+              <li class="t-angular"><svg class="ti ui" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#u-layers"/></svg><span>Reporting</span>Materialized views</li>
+              <li class="t-pg"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-postgresql"/></svg><span>Data</span>PostgreSQL</li>
+              <li class="t-aws"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-aws"/></svg><span>Runtime</span>AWS ECS</li>
+              <li class="t-aws"><svg class="ti ui" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#u-activity"/></svg><span>Monitoring</span>CloudWatch</li>
+            </ul>
+          </div>
         </article>
       </div>
     </section>
 
-    <!-- ============ SKILLS — reference ============ -->
-    <section class="section" id="skills" aria-labelledby="skills-title">
+    <!-- ============ SKILLS ============ -->
+    <section class="section section-alt" id="skills" aria-labelledby="skills-title">
       <div class="container">
         <header class="section-head reveal">
           <p class="kicker">Toolbox</p>
@@ -408,49 +470,56 @@
         </header>
         <div class="skills">
           <div class="skill-group skill-group-lg reveal">
-            <h3>Backend</h3>
-            <ul class="tags tags-lg"><li class="is-primary">Java</li><li class="is-primary">Spring Boot</li><li>Spring Security</li><li>JPA</li><li>Hibernate</li><li>REST APIs</li><li>GraphQL</li><li>Microservices</li></ul>
+            <h3><svg class="ti ui" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#u-server"/></svg>Backend</h3>
+            <ul class="tags tags-lg tech-tags"><li class="is-primary t-java"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-java"/></svg>Java</li><li class="is-primary t-spring"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-spring"/></svg>Spring Boot</li><li class="t-spring">Spring Security</li><li>JPA</li><li class="t-hib"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-hibernate"/></svg>Hibernate</li><li>REST APIs</li><li class="t-graphql"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-graphql"/></svg>GraphQL</li><li>Microservices</li></ul>
           </div>
           <div class="skill-group skill-group-lg reveal">
-            <h3>Frontend</h3>
-            <ul class="tags tags-lg"><li class="is-primary">Angular 17</li><li>TypeScript</li><li>RxJS</li><li>Standalone Components</li></ul>
+            <h3><svg class="ti ui" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#u-layout"/></svg>Frontend</h3>
+            <ul class="tags tags-lg tech-tags"><li class="is-primary t-angular"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-angular"/></svg>Angular 17</li><li class="t-ts"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-typescript"/></svg>TypeScript</li><li>RxJS</li><li>Standalone Components</li></ul>
           </div>
           <div class="skill-group skill-group-lg reveal">
-            <h3>Cloud &amp; DevOps</h3>
-            <ul class="tags tags-lg"><li class="is-primary">AWS</li><li>EC2</li><li>RDS</li><li>ECS</li><li>S3</li><li>CloudFront</li><li>CloudWatch</li><li>Parameter Store</li><li>GitHub Actions</li><li>ArgoCD</li></ul>
+            <h3><svg class="ti ui" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#u-cloud"/></svg>Cloud &amp; DevOps</h3>
+            <ul class="tags tags-lg tech-tags"><li class="is-primary t-aws"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-aws"/></svg>AWS</li><li>EC2</li><li>RDS</li><li>ECS</li><li>S3</li><li>CloudFront</li><li>CloudWatch</li><li>Parameter Store</li><li class="t-gha"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-githubactions"/></svg>GitHub Actions</li><li class="t-argo"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-argo"/></svg>ArgoCD</li></ul>
           </div>
           <div class="skill-group reveal">
-            <h3>Database</h3>
-            <ul class="tags"><li class="is-primary">PostgreSQL</li><li>Snowflake</li></ul>
+            <h3><svg class="ti ui" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#u-database"/></svg>Database</h3>
+            <ul class="tags tech-tags"><li class="is-primary t-pg"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-postgresql"/></svg>PostgreSQL</li><li class="t-snow"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-snowflake"/></svg>Snowflake</li></ul>
           </div>
           <div class="skill-group reveal">
-            <h3>Security</h3>
-            <ul class="tags"><li>JWT Authentication</li><li>Refresh Tokens</li></ul>
+            <h3><svg class="ti ui" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#u-shield"/></svg>Security</h3>
+            <ul class="tags tech-tags"><li class="t-violet"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-jwt"/></svg>JWT Authentication</li><li>Refresh Tokens</li></ul>
           </div>
           <div class="skill-group reveal">
-            <h3>Caching &amp; Performance</h3>
-            <ul class="tags"><li>IndexedDB</li><li>Client-side Caching</li></ul>
+            <h3><svg class="ti ui" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#u-zap"/></svg>Caching &amp; Performance</h3>
+            <ul class="tags tech-tags"><li>IndexedDB</li><li>Client-side Caching</li></ul>
           </div>
           <div class="skill-group reveal">
-            <h3>Monitoring</h3>
-            <ul class="tags"><li>Datadog APM</li><li>RUM</li><li>Logs</li><li>Error Tracking</li></ul>
+            <h3><svg class="ti ui" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#u-activity"/></svg>Monitoring</h3>
+            <ul class="tags tech-tags"><li class="t-dd"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-datadog"/></svg>Datadog APM</li><li>RUM</li><li>Logs</li><li>Error Tracking</li></ul>
           </div>
           <div class="skill-group reveal">
-            <h3>Tools</h3>
-            <ul class="tags"><li>Git</li><li>GitHub</li><li>GitLab</li><li>Postman</li><li>IntelliJ IDEA</li><li>VS Code</li><li>Cursor</li></ul>
+            <h3><svg class="ti ui" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#u-wrench"/></svg>Tools</h3>
+            <ul class="tags tech-tags"><li class="t-git"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-git"/></svg>Git</li><li class="t-gh"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-github"/></svg>GitHub</li><li class="t-gitlab"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-gitlab"/></svg>GitLab</li><li class="t-postman"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-postman"/></svg>Postman</li><li class="t-gh"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-intellij"/></svg>IntelliJ IDEA</li><li class="t-vscode"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-vscode"/></svg>VS Code</li><li class="t-gh"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-cursor"/></svg>Cursor</li></ul>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ============ OPEN SOURCE ============ -->
-    <section class="section section-alt section-tight" id="open-source" aria-labelledby="oss-title">
+    <section class="section section-tight" id="open-source" aria-labelledby="oss-title">
       <div class="container">
         <article class="oss reveal" aria-labelledby="oss-title">
+          <div class="oss-badge t-angular" aria-hidden="true">
+            <svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-angular"/></svg>
+            <span class="oss-npm t-npm"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-npm"/></svg></span>
+          </div>
           <div class="oss-copy">
-            <p class="kicker">Open source · Angular · npm</p>
-            <h2 id="oss-title"><code>required-field-marker</code></h2>
+            <p class="kicker">Open source · npm package</p>
+            <h2 id="oss-title"><span class="oss-glyph" aria-hidden="true">◈</span> <code>required-field-marker</code></h2>
             <p class="oss-desc">Angular package for reusable form-field validation and error indication.</p>
+            <ul class="oss-tags" aria-label="Package topics">
+              <li>Angular</li><li>Forms</li><li>Validation</li><li>Reusable directive</li>
+            </ul>
           </div>
           <div class="oss-side">
             <pre class="snippet" aria-label="Install command"><code><span class="prompt" aria-hidden="true">$</span> npm install required-field-marker</code></pre>
@@ -464,7 +533,7 @@
     </section>
 
     <!-- ============ ABOUT ============ -->
-    <section class="section" id="about" aria-labelledby="about-title">
+    <section class="section section-alt" id="about" aria-labelledby="about-title">
       <div class="container about">
         <div class="about-copy reveal">
           <p class="kicker">About</p>
@@ -477,6 +546,13 @@
             I care about what happens after the merge &mdash; performance, security, and being able to see
             and fix what's going on in production.
           </p>
+          <ol class="lifecycle" aria-label="Delivery lifecycle I work across">
+            <li class="t-spring"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-spring"/></svg><span>Build</span></li>
+            <li class="t-gha"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-githubactions"/></svg><span>CI</span></li>
+            <li class="t-argo"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-argo"/></svg><span>Deploy</span></li>
+            <li class="t-aws"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-aws"/></svg><span>Run</span></li>
+            <li class="t-dd"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-datadog"/></svg><span>Observe</span></li>
+          </ol>
         </div>
         <aside class="education reveal" aria-labelledby="edu-title">
           <h3 id="edu-title">Education</h3>
@@ -490,18 +566,24 @@
     </section>
 
     <!-- ============ CONTACT ============ -->
-    <section class="section section-alt contact" id="contact" aria-labelledby="contact-title">
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div class="contact-bg" aria-hidden="true"><span class="blob blob-a"></span><span class="blob blob-b"></span></div>
       <div class="container contact-inner reveal">
         <p class="kicker">Contact</p>
-        <h2 id="contact-title">Have a project, opportunity, or technical problem to discuss?</h2>
-        <a class="contact-email" href="mailto:syamchenchugalla2709@gmail.com">syamchenchugalla2709@gmail.com</a>
-        <ul class="contact-links">
-          <li><a class="btn btn-primary" href="mailto:syamchenchugalla2709@gmail.com">Email me</a></li>
-          <li><a class="btn btn-outline" href="https://linkedin.com/in/syam-kumar-chenchugalla" target="_blank" rel="noopener">LinkedIn</a></li>
-          <li><a class="btn btn-outline" href="https://github.com/SyamKumar-C" target="_blank" rel="noopener">GitHub</a></li>
-          <li><a class="btn btn-outline" href="https://gitlab.com/users/SyamKumar.C/groups" target="_blank" rel="noopener">GitLab</a></li>
-          <li><a class="btn btn-ghost" href="assets/Syam-Kumar-Chenchugalla-Resume.pdf" download>Download Resume</a></li>
+        <h2 id="contact-title">Let's build something reliable.</h2>
+        <p class="contact-sub">Have a project, opportunity, or technical problem to discuss?</p>
+        <ul class="contact-cards">
+          <li><a class="contact-card" href="mailto:syamchenchugalla2709@gmail.com">
+            <span class="cc-ico"><svg class="ti ui" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#u-mail"/></svg></span><span class="cc-txt"><b>Email</b><small>syamchenchugalla2709@gmail.com</small></span></a></li>
+          <li><a class="contact-card" href="https://linkedin.com/in/syam-kumar-chenchugalla" target="_blank" rel="noopener">
+            <span class="cc-ico"><svg class="ti" aria-hidden="true" viewBox="0 0 24 24"><path class="fill" d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4V21H3zM9.5 9.75h3.8v1.6h.06c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.77 2.65 4.77 6.1V21h-4v-4.9c0-1.17-.02-2.68-1.63-2.68-1.64 0-1.89 1.28-1.89 2.6V21h-4z"/></svg></span><span class="cc-txt"><b>LinkedIn</b><small>syam-kumar-chenchugalla</small></span></a></li>
+          <li><a class="contact-card" href="https://github.com/SyamKumar-C" target="_blank" rel="noopener">
+            <span class="cc-ico"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-github"/></svg></span><span class="cc-txt"><b>GitHub</b><small>SyamKumar-C</small></span></a></li>
         </ul>
+        <p class="contact-more">
+          <a href="https://gitlab.com/users/SyamKumar.C/groups" target="_blank" rel="noopener"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-gitlab"/></svg>GitLab</a>
+          <a href="assets/Syam-Kumar-Chenchugalla-Resume.pdf" download><svg class="ti ui" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#u-file"/></svg>Download resume</a>
+        </p>
       </div>
     </section>
   </main>

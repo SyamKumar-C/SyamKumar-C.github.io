@@ -6,7 +6,7 @@
   <title>Syam Kumar Chenchugalla | Java Full Stack Developer</title>
   <meta name="description" content="Java Full Stack Developer with 4.5+ years building enterprise web applications with Java, Spring Boot, Angular, PostgreSQL and AWS.">
   <meta name="author" content="Syam Kumar Chenchugalla">
-  <meta name="theme-color" content="#fafbfc">
+  <meta name="theme-color" content="#f7f5f1">
   <link rel="canonical" href="https://syamkumar-c.github.io/">
 
   <!-- Resolve the theme before first paint: saved choice > system preference > light -->
@@ -86,10 +86,24 @@
         <a class="btn btn-sm btn-outline nav-resume" href="assets/Syam-Kumar-Chenchugalla-Resume.pdf" download>Resume</a>
       </div>
       <div class="nav-actions">
-        <button class="theme-toggle" type="button" aria-pressed="false" aria-label="Dark theme" title="Switch theme">
-          <span class="theme-thumb" aria-hidden="true"></span>
-          <svg class="icon theme-sun" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
-          <svg class="icon theme-moon" aria-hidden="true" viewBox="0 0 24 24"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z"/></svg>
+        <button class="lamp" type="button" aria-pressed="false" aria-label="Dark theme" title="Pull to switch theme">
+          <span class="lamp-rig" aria-hidden="true">
+            <svg class="lamp-svg" viewBox="0 0 44 104" focusable="false">
+              <defs><radialGradient id="lampGlow"><stop offset="0" stop-color="#ffd34d" stop-opacity=".9"/><stop offset=".55" stop-color="#ffd34d" stop-opacity=".35"/><stop offset="1" stop-color="#ffd34d" stop-opacity="0"/></radialGradient></defs>
+              <rect class="lamp-hit" x="4" y="0" width="36" height="104" rx="8"/>
+              <path class="lamp-wire" d="M22 0V7"/>
+              <g class="lamp-bulb">
+                <circle class="lamp-halo" cx="22" cy="23" r="21"/>
+                <rect class="lamp-socket" x="16.5" y="6" width="11" height="7" rx="2"/>
+                <path class="lamp-glass" d="M22 12.5c-6.3 0-10.6 4.4-10.6 10.2 0 3.9 2.1 6.4 4 8.4 1.3 1.3 1.9 2.5 1.9 4h9.4c0-1.5.6-2.7 1.9-4 1.9-2 4-4.5 4-8.4 0-5.8-4.3-10.2-10.6-10.2z"/>
+                <path class="lamp-filament" d="M18.6 27.5l1.8-3.2 1.6 3.2 1.6-3.2 1.8 3.2"/>
+                <rect class="lamp-base" x="17.8" y="35.4" width="8.4" height="3.6" rx="1.2"/>
+              </g>
+              <path class="lamp-cord" d="M22 39 Q22 60 22 82"/>
+              <circle class="lamp-knob" cx="22" cy="86" r="4"/>
+            </svg>
+            <span class="lamp-label"><span class="ll ll-dark">Dark</span><span class="ll ll-light">Light</span></span>
+          </span>
         </button>
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu">
           <span class="sr-only">Menu</span>
@@ -154,24 +168,135 @@
           </ul>
         </div>
 
-        <!-- Hero illustration: the request path the work spans, with surrounding tools -->
-        <figure class="hero-visual hero-anim" style="--d:3" role="img"
-                aria-label="Illustration of the stack: Angular client, Spring Boot APIs, API security, PostgreSQL and AWS, surrounded by related tools">
-          <div class="hv-halo" aria-hidden="true"></div>
-          <div class="hv-track" aria-hidden="true"><i></i><i></i><i></i></div>
-          <ol class="hv-stack" aria-hidden="true">
-            <li class="hv-node t-angular" style="--n:0"><span class="hv-ico"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-angular"/></svg></span><span class="hv-txt"><b>Angular 17</b><small>Client · standalone components</small></span></li>
-            <li class="hv-node t-spring" style="--n:1"><span class="hv-ico"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-spring"/></svg></span><span class="hv-txt"><b>Spring Boot 3</b><small>REST APIs · Java 21</small></span></li>
-            <li class="hv-node t-violet" style="--n:2"><span class="hv-ico"><svg class="ti ui" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#u-shield"/></svg></span><span class="hv-txt"><b>API Security</b><small>JWT · refresh tokens</small></span></li>
-            <li class="hv-node t-pg" style="--n:3"><span class="hv-ico"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-postgresql"/></svg></span><span class="hv-txt"><b>PostgreSQL</b><small>tenant-routed datasources</small></span></li>
-            <li class="hv-node t-aws" style="--n:4"><span class="hv-ico"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-aws"/></svg></span><span class="hv-txt"><b>AWS</b><small>cloud infrastructure</small></span></li>
-          </ol>
-          <span class="hv-float f1 t-java" aria-hidden="true"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-java"/></svg></span>
-          <span class="hv-float f2 t-graphql" aria-hidden="true"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-graphql"/></svg></span>
-          <span class="hv-float f3 t-ts" aria-hidden="true"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-typescript"/></svg></span>
-          <span class="hv-float f4 t-gha" aria-hidden="true"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-githubactions"/></svg></span>
-          <span class="hv-float f5 t-dd" aria-hidden="true"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-datadog"/></svg></span>
-          <span class="hv-float f6 t-argo" aria-hidden="true"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-argo"/></svg></span>
+        <!-- Hero illustration: a stylized engineer at a desk, coding a full-stack / cloud application -->
+        <figure class="hero-art hero-anim" style="--d:3" role="img"
+                aria-label="Illustration of a software engineer at a desk, writing Java and Spring Boot code on a monitor, with an Angular interface on a laptop and floating cards for the API, database and cloud">
+          <div class="ha-glow" aria-hidden="true"></div>
+          <svg class="ha-scene" viewBox="0 0 520 470" aria-hidden="true" focusable="false">
+            <defs>
+              <linearGradient id="haHoodie" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" style="stop-color:var(--il-hoodie-a)"/><stop offset="1" style="stop-color:var(--il-hoodie-b)"/>
+              </linearGradient>
+              <linearGradient id="haScreenGlow" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#5cb8ff" stop-opacity=".35"/><stop offset="1" stop-color="#7c3aed" stop-opacity="0"/>
+              </linearGradient>
+              <clipPath id="haCodeClip"><rect x="150" y="104" width="262" height="150" rx="2"/></clipPath>
+            </defs>
+
+            <!-- back wall shapes -->
+            <rect x="34" y="22" width="452" height="340" rx="28" style="fill:var(--il-wall)"/>
+            <g class="ha-wallgrid" style="stroke:var(--il-grid)" stroke-width="1">
+              <path d="M34 82h452M34 142h452M34 202h452M34 262h452M34 322h452"/>
+              <path d="M94 22v340M154 22v340M214 22v340M274 22v340M334 22v340M394 22v340M454 22v340"/>
+            </g>
+
+            <!-- monitor -->
+            <ellipse cx="282" cy="270" rx="190" ry="40" fill="url(#haScreenGlow)"/>
+            <rect x="214" y="268" width="136" height="12" rx="4" style="fill:var(--il-stand)"/>
+            <path d="M262 268h40l8 58h-56z" style="fill:var(--il-stand)"/>
+            <rect x="132" y="70" width="300" height="200" rx="16" fill="#0b1324" style="stroke:var(--il-frame)" stroke-width="6"/>
+            <rect x="140" y="78" width="284" height="20" rx="8" fill="#111b31"/>
+            <circle cx="153" cy="88" r="3.2" fill="#ff5f57"/><circle cx="164" cy="88" r="3.2" fill="#febc2e"/><circle cx="175" cy="88" r="3.2" fill="#28c840"/>
+            <rect x="192" y="82" width="122" height="12" rx="4" fill="#1a2742"/>
+            <text x="200" y="91" font-family="JetBrains Mono, monospace" font-size="7.5" fill="#9fb3d1">TenantRouting.java</text>
+
+            <g clip-path="url(#haCodeClip)">
+              <g class="ha-code" font-family="JetBrains Mono, monospace" font-size="8.6">
+                <g>
+                  <text x="152" y="116" fill="#4d5d7a">1</text><text x="166" y="116" fill="#f59e0b">@Configuration</text>
+                  <text x="152" y="130" fill="#4d5d7a">2</text><text x="166" y="130"><tspan fill="#c084fc">public class</tspan><tspan fill="#e2e8f0"> TenantRouting</tspan></text>
+                  <text x="152" y="144" fill="#4d5d7a">3</text><text x="178" y="144"><tspan fill="#c084fc">extends</tspan><tspan fill="#5cb8ff"> AbstractRoutingDataSource</tspan><tspan fill="#e2e8f0"> {</tspan></text>
+                  <text x="152" y="158" fill="#4d5d7a">4</text><text x="178" y="158" fill="#f59e0b">@Override</text>
+                  <text x="152" y="172" fill="#4d5d7a">5</text><text x="178" y="172"><tspan fill="#c084fc">protected</tspan><tspan fill="#e2e8f0"> Object determineLookupKey() {</tspan></text>
+                  <text x="152" y="186" fill="#4d5d7a">6</text><text x="190" y="186"><tspan fill="#c084fc">return</tspan><tspan fill="#86efac"> TenantContext</tspan><tspan fill="#e2e8f0">.get();</tspan></text>
+                  <text x="152" y="200" fill="#4d5d7a">7</text><text x="178" y="200" fill="#e2e8f0">}</text>
+                  <text x="152" y="214" fill="#4d5d7a">8</text><text x="166" y="214" fill="#e2e8f0">}</text>
+                  <text x="152" y="228" fill="#4d5d7a">9</text><text x="166" y="228" fill="#64748b">// REST API · Spring Boot 3</text>
+                  <text x="152" y="242" fill="#4d5d7a">10</text><text x="166" y="242" fill="#f59e0b">@RestController</text>
+                  <text x="152" y="256" fill="#4d5d7a">11</text><text x="166" y="256"><tspan fill="#c084fc">class</tspan><tspan fill="#e2e8f0"> ApiController {</tspan></text>
+                </g>
+                <g transform="translate(0 154)">
+                  <text x="152" y="116" fill="#4d5d7a">12</text><text x="178" y="116" fill="#f59e0b">@GetMapping</text>
+                  <rect x="178" y="124" width="150" height="7" rx="3" fill="#334155"/>
+                  <rect x="190" y="138" width="110" height="7" rx="3" fill="#1e3a5f"/>
+                  <rect x="190" y="152" width="160" height="7" rx="3" fill="#3b2a5c"/>
+                  <rect x="178" y="166" width="40" height="7" rx="3" fill="#334155"/>
+                  <rect x="166" y="180" width="18" height="7" rx="3" fill="#334155"/>
+                  <rect x="166" y="194" width="130" height="7" rx="3" fill="#1e3a5f"/>
+                  <rect x="178" y="208" width="170" height="7" rx="3" fill="#3b2a5c"/>
+                  <rect x="178" y="222" width="90" height="7" rx="3" fill="#334155"/>
+                  <rect x="166" y="236" width="18" height="7" rx="3" fill="#334155"/>
+                </g>
+              </g>
+            </g>
+            <rect class="ha-cursor" x="318" y="179" width="5" height="9" fill="#5cb8ff"/>
+
+            <!-- desk -->
+            <rect x="22" y="322" width="476" height="16" rx="8" style="fill:var(--il-desk)"/>
+            <rect x="40" y="338" width="440" height="10" rx="4" style="fill:var(--il-desk-edge)"/>
+
+            <!-- laptop with an Angular-style UI -->
+            <path d="M356 318h126l10 6H346z" style="fill:var(--il-frame)"/>
+            <rect x="364" y="250" width="110" height="70" rx="7" style="fill:var(--il-frame)"/>
+            <rect x="369" y="255" width="100" height="60" rx="4" style="fill:var(--il-ui-bg)"/>
+            <rect x="369" y="255" width="100" height="11" rx="4" fill="#dd0031"/>
+            <path d="M375 258.5l3-1.2 3 1.2-.5 4-2.5 1.4-2.5-1.4z" fill="#fff"/>
+            <rect x="374" y="271" width="40" height="6" rx="2" style="fill:var(--il-ui-line)"/>
+            <rect x="374" y="281" width="28" height="28" rx="3" style="fill:var(--il-ui-card)"/>
+            <rect x="406" y="281" width="28" height="28" rx="3" style="fill:var(--il-ui-card)"/>
+            <rect x="438" y="281" width="26" height="28" rx="3" style="fill:var(--il-ui-card)"/>
+            <rect class="ha-bar b1" x="379" y="296" width="5" height="9" rx="1" fill="#5cb8ff"/>
+            <rect class="ha-bar b2" x="387" y="291" width="5" height="14" rx="1" fill="#7c3aed"/>
+            <rect class="ha-bar b3" x="395" y="294" width="5" height="11" rx="1" fill="#22c55e"/>
+            <circle cx="420" cy="295" r="7" fill="none" stroke="#f08c00" stroke-width="3" stroke-dasharray="30 14"/>
+            <rect x="442" y="288" width="18" height="3" rx="1.5" style="fill:var(--il-ui-line)"/><rect x="442" y="295" width="13" height="3" rx="1.5" style="fill:var(--il-ui-line)"/><rect x="442" y="302" width="16" height="3" rx="1.5" style="fill:var(--il-ui-line)"/>
+
+            <!-- mug with steam -->
+            <rect x="300" y="296" width="22" height="26" rx="5" style="fill:var(--il-mug)"/>
+            <path d="M322 302a7 7 0 0 1 0 14" fill="none" style="stroke:var(--il-mug)" stroke-width="4"/>
+            <path class="ha-steam s1" d="M306 290c-4-6 4-8 0-14" fill="none" style="stroke:var(--il-steam)" stroke-width="2" stroke-linecap="round"/>
+            <path class="ha-steam s2" d="M315 290c-4-6 4-8 0-14" fill="none" style="stroke:var(--il-steam)" stroke-width="2" stroke-linecap="round"/>
+
+            <!-- engineer, seen from behind -->
+            <g class="ha-person"><g transform="translate(32 6) scale(0.82)">
+              <path d="M104 470c0-62 22-112 70-112s70 50 70 112z" fill="url(#haHoodie)"/>
+              <path d="M146 372c8 18 48 18 56 0" fill="none" stroke="rgba(255,255,255,.22)" stroke-width="4" stroke-linecap="round"/>
+              <rect x="161" y="330" width="26" height="30" rx="10" style="fill:var(--il-skin)"/>
+              <ellipse cx="174" cy="304" rx="35" ry="38" style="fill:var(--il-hair)"/>
+              <path d="M140 300c2-26 18-40 34-40s32 14 34 40" fill="none" style="stroke:var(--il-hair-hi)" stroke-width="3" stroke-linecap="round" opacity=".5"/>
+              <path d="M134 306c0-34 18-56 40-56s40 22 40 56" fill="none" stroke="#1b2333" stroke-width="7" stroke-linecap="round"/>
+              <rect x="126" y="298" width="16" height="26" rx="7" fill="#1b2333"/>
+              <rect x="206" y="298" width="16" height="26" rx="7" fill="#1b2333"/>
+              <rect x="129" y="303" width="4" height="16" rx="2" fill="#5cb8ff" class="ha-led"/>
+            </g></g>
+            <g class="ha-chair">
+              <rect x="122" y="398" width="112" height="76" rx="20" style="fill:var(--il-chair)" opacity=".92"/>
+              <rect x="134" y="407" width="88" height="5" rx="2.5" fill="#fff" opacity=".1"/>
+            </g>
+          </svg>
+
+          <!-- floating cards (HTML so they share the site's type and icons) -->
+          <div class="ha-card c-api t-spring" data-depth="14" aria-hidden="true">
+            <span class="ha-ico"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-spring"/></svg></span>
+            <span><b>REST API</b><small>Spring Boot</small></span>
+            <span class="ha-ok">200 OK</span>
+          </div>
+          <div class="ha-card c-ui t-angular" data-depth="20" aria-hidden="true">
+            <span class="ha-ico"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-angular"/></svg></span>
+            <span><b>Angular</b><small>standalone components</small></span>
+          </div>
+          <div class="ha-card c-db t-pg" data-depth="10" aria-hidden="true">
+            <span class="ha-ico"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-postgresql"/></svg></span>
+            <span><b>PostgreSQL</b><small>tenant A · tenant B</small></span>
+          </div>
+          <div class="ha-card c-cloud t-aws" data-depth="24" aria-hidden="true">
+            <span class="ha-ico"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-aws"/></svg></span>
+            <span><b>Cloud</b><small>AWS</small></span>
+          </div>
+          <div class="ha-card c-java t-java ha-chip" data-depth="30" aria-hidden="true"><span class="ha-ico"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-java"/></svg></span></div>
+          <span class="ha-particle p1" aria-hidden="true"></span>
+          <span class="ha-particle p2" aria-hidden="true"></span>
+          <span class="ha-particle p3" aria-hidden="true"></span>
         </figure>
       </div>
     </section>
@@ -196,7 +321,7 @@
             <dd class="metric-val"><span class="affix">~</span><span class="num" data-to="50">50</span><span class="affix">%</span></dd>
           </div>
         </dl>
-        <p class="metrics-note">Performance improvements are approximate, from Angular rendering and API-interaction optimization on ZeroNorth eBDN.</p>
+        <p class="metrics-note">Approximate figures, from ZeroNorth eBDN.</p>
       </div>
     </section>
 
@@ -213,42 +338,36 @@
             <span class="strength-num">01</span>
             <h3>Backend Engineering</h3>
             <p>Spring Boot services with clean API contracts other teams can rely on.</p>
-            <p class="strength-tech">REST · GraphQL · JPA/Hibernate · Microservice communication</p>
           </li>
           <li class="strength t-angular reveal">
             <span class="strength-ico" aria-hidden="true"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-angular"/></svg></span>
             <span class="strength-num">02</span>
             <h3>Full-Stack Applications</h3>
             <p>Features end to end &mdash; the API and the Angular screen that uses it.</p>
-            <p class="strength-tech">Angular · TypeScript · RxJS · Standalone components</p>
           </li>
           <li class="strength t-aws reveal">
             <span class="strength-ico" aria-hidden="true"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-aws"/></svg></span>
             <span class="strength-num">03</span>
             <h3>Cloud &amp; DevOps</h3>
             <p>Running on AWS and shipping through automated pipelines.</p>
-            <p class="strength-tech">AWS · CI/CD · GitHub Actions · ArgoCD</p>
           </li>
           <li class="strength t-cloud reveal">
             <span class="strength-ico" aria-hidden="true"><svg class="ti ui" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#u-zap"/></svg></span>
             <span class="strength-num">04</span>
             <h3>Performance &amp; Scalability</h3>
             <p>Finding where time is spent and removing it, from the browser to the database.</p>
-            <p class="strength-tech">Caching · Async processing · Query &amp; frontend optimization</p>
           </li>
           <li class="strength t-violet reveal">
             <span class="strength-ico" aria-hidden="true"><svg class="ti ui" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#u-shield"/></svg></span>
             <span class="strength-num">05</span>
             <h3>Security</h3>
             <p>Secure API access with predictable session handling.</p>
-            <p class="strength-tech">Spring Security · JWT · Refresh tokens</p>
           </li>
           <li class="strength t-dd reveal">
             <span class="strength-ico" aria-hidden="true"><svg class="ti ui" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#u-activity"/></svg></span>
             <span class="strength-num">06</span>
             <h3>Production Engineering</h3>
             <p>Staying with software after it ships &mdash; monitoring, troubleshooting, deployments.</p>
-            <p class="strength-tech">Datadog · CloudWatch · Observability</p>
           </li>
         </ol>
       </div>
@@ -277,13 +396,9 @@
               <ul class="tags tech-tags" aria-label="Technologies">
                 <li class="is-primary t-java"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-java"/></svg>Java 21</li><li class="is-primary t-spring"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-spring"/></svg>Spring Boot 3</li><li class="t-angular"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-angular"/></svg>Angular 17</li><li class="t-pg"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-postgresql"/></svg>PostgreSQL</li><li class="t-aws"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-aws"/></svg>AWS</li><li class="t-dd"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-datadog"/></svg>Datadog</li><li class="t-argo"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-argo"/></svg>ArgoCD</li><li class="t-cloud"><svg class="ti ui" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#u-database"/></svg>IndexedDB</li><li class="t-violet"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-jwt"/></svg>JWT</li><li class="t-gha"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-githubactions"/></svg>GitHub Actions</li><li class="t-snow"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-snowflake"/></svg>Snowflake</li>
               </ul>
-              <div class="wins">
-                <div class="win t-angular"><span class="win-val">~30%</span><span class="win-label">Frontend performance</span></div>
-                <div class="win t-spring"><span class="win-val">~50%</span><span class="win-label">Scrolling performance</span></div>
-              </div>
               <ul class="bullets">
                 <li>Designed and implemented <strong>multi-tenant data access</strong> using <code>AbstractRoutingDataSource</code>, tenant context propagation and dynamic datasource routing for tenant-specific data isolation.</li>
-                <li>Optimized <strong>Angular component rendering and API interactions</strong>, improving frontend performance by ~30% and scrolling performance by ~50%.</li>
+                <li>Optimized <strong>Angular component rendering and API interactions</strong>, improving frontend performance by <mark class="hl">~30%</mark> and scrolling performance by <mark class="hl">~50%</mark>.</li>
                 <li>Implemented <strong>IndexedDB-based client-side caching</strong>, reducing repeated backend API calls and improving offline usability.</li>
                 <li>Contributed to migrating infrastructure from <strong>on-premise VMs to AWS</strong>, with solution architects.</li>
                 <li>Implemented <strong>JWT authentication and refresh tokens</strong> for secure API access and session handling.</li>
@@ -371,28 +486,18 @@
                 transfer operations. It captures bunkering data and produces digitally signed BDN reports
                 for the Singapore Maritime and Port Authority.
               </p>
-              <div class="supporting">
-                <p class="supporting-title">Supporting technologies</p>
-                <dl class="supporting-list">
-                  <div class="t-cloud"><svg class="ti ui" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#u-database"/></svg><dt>IndexedDB</dt><dd>browser cache</dd></div>
-                  <div class="t-violet"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-jwt"/></svg><dt>JWT</dt><dd>API auth</dd></div>
-                  <div class="t-dd"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-datadog"/></svg><dt>Datadog</dt><dd>observability</dd></div>
-                  <div class="t-gha"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-githubactions"/></svg><dt>GitHub Actions</dt><dd>CI</dd></div>
-                  <div class="t-argo"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-argo"/></svg><dt>ArgoCD</dt><dd>deployment</dd></div>
-                </dl>
-              </div>
             </div>
 
             <figure class="sysmap" aria-labelledby="sysmap-cap">
               <figcaption id="sysmap-cap" class="diagram-title">Architecture <span>· hover or focus a layer for details</span></figcaption>
               <div class="flow">
                 <div class="flow-step t-angular" tabindex="0" aria-describedby="tip-ng">
-                  <span class="flow-ico"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-angular"/></svg></span><span class="flow-kind">Client</span><strong>Angular 17</strong><em>standalone components</em>
+                  <span class="flow-ico"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-angular"/></svg></span><span class="flow-kind">Client</span><strong>Angular 17</strong><em>IndexedDB cache</em>
                   <span class="tip" role="tooltip" id="tip-ng">Frontend built with standalone components; frequently used data is cached in IndexedDB.</span>
                 </div>
                 <div class="flow-arrow" aria-hidden="true"><span>JWT · REST</span></div>
                 <div class="aws-box">
-                  <p class="aws-label"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-aws"/></svg>AWS <span>· migrated from on-premise VMs</span></p>
+                  <p class="aws-label"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-aws"/></svg>AWS</p>
                   <ol class="flow-inner">
                     <li class="flow-step t-spring flow-accent" tabindex="0" aria-describedby="tip-api">
                       <span class="flow-ico"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-spring"/></svg></span><span class="flow-kind">API</span><strong>Spring Boot APIs</strong><em>Java 21 · Spring Boot 3</em>
@@ -411,6 +516,11 @@
                       <span class="tip" role="tooltip" id="tip-pg">Each tenant's data stays isolated behind its own datasource.</span>
                     </li>
                   </ol>
+                  <ul class="flow-ops" aria-label="Delivery and observability">
+                    <li class="t-gha"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-githubactions"/></svg>GitHub Actions</li>
+                    <li class="t-argo"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-argo"/></svg>ArgoCD</li>
+                    <li class="t-dd"><svg class="ti" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-datadog"/></svg>Datadog</li>
+                  </ul>
                 </div>
               </div>
             </figure>
@@ -439,10 +549,7 @@
             <div class="project-main">
               <p class="project-label">TCS · 2021 – 2023</p>
               <h3 id="p-bt">British Telecom (BT)</h3>
-              <p class="project-desc">
-                Enterprise application for British Telecom &mdash; backend services exposed over REST and
-                GraphQL, integrated with other microservices.
-              </p>
+              <p class="project-desc">Enterprise platform for British Telecom: backend services, search and reporting.</p>
             </div>
             <ul class="capabilities" aria-label="System capabilities">
               <li class="t-spring"><svg class="ti ui" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#u-server"/></svg><span>API</span>REST APIs</li>
@@ -538,10 +645,6 @@
         <div class="about-copy reveal">
           <p class="kicker">About</p>
           <h2 id="about-title">Backend-first, full-stack in practice</h2>
-          <p>
-            Most of my work is on the backend &mdash; Java, Spring Boot and PostgreSQL &mdash; and I build the
-            Angular frontends that sit on top of it.
-          </p>
           <p>
             I care about what happens after the merge &mdash; performance, security, and being able to see
             and fix what's going on in production.

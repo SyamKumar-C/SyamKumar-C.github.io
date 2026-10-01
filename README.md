@@ -11,7 +11,7 @@ A static site with plain HTML, CSS and a small amount of vanilla JavaScript. The
 ```
 index.html                               All page content
 assets/css/styles.css                    Styles (design tokens at the top, in :root)
-assets/js/main.js                        Theme toggle, mobile nav, scroll reveal, active link, live npm version
+assets/js/main.js                        Pull-cord theme lamp, mobile nav, reveals, count-up, parallax, live npm version
 assets/fonts/                            Self-hosted Inter + JetBrains Mono (latin subset)
 assets/img/icons.svg                     SVG sprite: technology icons (Simple Icons, CC0; Devicon, MIT) and UI icons
 assets/img/favicon.svg                   Favicon
@@ -27,7 +27,8 @@ assets/Syam-Kumar-Chenchugalla-Resume.pdf  Resume served by the "Download Resume
   bullets that are always visible and more inside a `<details>` block.
 - **Colors / themes:** light theme tokens are on `:root` and dark theme tokens on `[data-theme="dark"]` at the top of `styles.css`.
   Light is the default; a visitor's choice is saved in `localStorage` (`theme`), otherwise the system preference is used.
-  Switching uses the View Transitions API for a radial reveal from the toggle where supported; other browsers get a
+  The switch is the hanging bulb in the header: pulling it animates the cord (SVG path + damped spring in `main.js`)
+  and starts the theme change mid-pull. Switching uses the View Transitions API for a radial reveal from the toggle where supported; other browsers get a
   synchronized cross-fade of the registered colour tokens. Duration and easing are `--theme-dur` / `--theme-ease`.
 - **Icons:** reference a symbol with `<svg class="ti"><use href="assets/img/icons.svg#i-java"/></svg>`.
   Add a `t-*` class (e.g. `t-spring`) on a parent to tint icons and badges with that technology's colour.

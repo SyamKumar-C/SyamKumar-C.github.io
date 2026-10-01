@@ -817,22 +817,27 @@ img, svg { display: block; max-width: 100%; }
 }
 .lamp:focus-visible { outline: none; }
 .lamp { touch-action: none; user-select: none; -webkit-user-select: none; }
-.lamp-rig { cursor: grab; }
-.lamp:active .lamp-rig { cursor: grabbing; }
+.lamp-hit, .lamp-bulb, .lamp-label { cursor: grab; }
+.lamp:active .lamp-hit, .lamp:active .lamp-label { cursor: grabbing; }
 /* past the switch point while dragging: the label previews the change */
 .lamp.is-armed .lamp-label { color: var(--accent-ink); background: var(--accent); border-color: var(--accent); }
 .lamp:focus-visible .lamp-label { outline: 2px solid var(--accent); outline-offset: 2px; }
 .lamp:focus-visible .lamp-glass { stroke: var(--accent); stroke-width: 2; }
 .lamp-rig {
   position: absolute;
-  left: 0; top: 0;
-  width: 44px; height: 104px;
-  transform-origin: 22px 0;
-  transform: rotate(var(--swing, 0deg)) scale(var(--rig-scale, 1));
-  will-change: transform;
+  left: -30px; top: 0;
+  width: 104px; height: 170px;
+  transform-origin: 52px 0;
+  transform: scale(var(--rig-scale, 1));
+  pointer-events: none;            /* only the cord hit area, bulb and label take input */
+  view-transition-name: theme-lamp; /* stays live above the page during the theme reveal */
 }
-.lamp-svg { display: block; width: 44px; height: 104px; overflow: visible; }
+.lamp-svg { display: block; width: 104px; height: 170px; overflow: visible; }
 .lamp-hit { fill: transparent; pointer-events: all; }
+.lamp-bulb, .lamp-label { pointer-events: auto; }
+::view-transition-group(theme-lamp) { animation: none; }
+::view-transition-old(theme-lamp) { display: none; }
+::view-transition-new(theme-lamp) { animation: none; }
 .lamp-wire { stroke: var(--border-strong); stroke-width: 1.5; fill: none; }
 .lamp-bulb { transform-box: view-box; transform-origin: 22px 7px; }
 .lamp-socket { fill: #8a92a6; }
@@ -855,7 +860,7 @@ img, svg { display: block; max-width: 100%; }
   position: absolute;
   left: 50%; top: 92px;
   display: grid;
-  translate: -50% var(--ly, 0px);
+  translate: calc(-50% + var(--lx, 0px)) var(--ly, 0px);
   padding: 2px 7px;
   border: 1px solid var(--border-strong);
   border-radius: 6px;

@@ -72,53 +72,71 @@
   var bulb = themeBtn.querySelector(".lamp-bulb");
   var label = themeBtn.querySelector(".lamp-label");
   var CORD_TOP = 39, CORD_END = 82, KNOB_GAP = 4;
-  var pulling = false;
+  var pulling = false;           // true while a pull or the first part of its release is playing
+  var animId = 0;                // bumping this cancels the running cord animation
+  var pose = { s: 0, dx: 0 };    // current cord pose, so a new pull can start from it
 
-  function drawCord(stretch, bend, bulbDrop, bulbTilt) {
+  // Cord from the bulb to a knob that can be pulled down (stretch) and sideways (dx).
+  function drawCord(stretch, dx, bend, bulbDrop, bulbTilt) {
     var top = CORD_TOP + bulbDrop;
-    var end = CORD_END + stretch;
-    var midY = (top + end) / 2;
-    cord.setAttribute("d", "M22 " + top.toFixed(2) + " Q" + (22 + bend).toFixed(2) + " " + midY.toFixed(2) + " 22 " + end.toFixed(2));
-    knob.setAttribute("cy", (end + KNOB_GAP).toFixed(2));
+    var endX = 22 + dx, endY = CORD_END + stretch;
+    var cx = 22 + dx / 2 + bend, cy = (top + endY) / 2;
+    cord.setAttribute("d", "M22 " + top.toFixed(2) + " Q" + cx.toFixed(2) + " " + cy.toFixed(2) + " " + endX.toFixed(2) + " " + endY.toFixed(2));
+    knob.setAttribute("cx", endX.toFixed(2));
+    knob.setAttribute("cy", (endY + KNOB_GAP).toFixed(2));
     bulb.setAttribute("transform", "translate(0 " + bulbDrop.toFixed(2) + ") rotate(" + bulbTilt.toFixed(2) + " 22 7)");
+    label.style.setProperty("--lx", dx.toFixed(2) + "px");
     label.style.setProperty("--ly", stretch.toFixed(2) + "px");
+    pose.s = stretch; pose.dx = dx;
   }
-
+  function rest() { drawCord(0, 0, 0, 0, 0); }
   function nextTheme() { return doc.getAttribute("data-theme") === "dark" ? "light" : "dark"; }
   function saveTheme(t) { try { localStorage.setItem(THEME_KEY, t); } catch (e) { /* not persisted */ } }
 
-  // Spring back from a stretched cord; optionally switch the theme as the cord is let go
-  function releaseFrom(s0, bend0, dir, next) {
+  // Let go: spring back continuously from wherever the cord was released, with an upward
+  // overshoot and a sideways sway that both settle together. The theme switches at release.
+  function releaseFrom(s0, x0, next) {
     pulling = true;
+    var id = ++animId;
     if (next) { saveTheme(next); changeTheme(next, bulb); }
-    var amp = Math.min(Math.max(s0 / 16, 0.4), 1.8);
-    var TOTAL = 760 + 140 * amp, t0 = null;
+    var sway = Math.abs(x0) < 3 ? 6 : 0;         // a straight pull still sways a little
+    var dropMax = Math.min(s0 * 0.22, 5);
+    var elapsed = 0, last = null, TOTAL = 1350;
     function frame(now) {
-      if (t0 === null) t0 = now;
-      var r = (now - t0) / 1000;
-      var spring = Math.exp(-r * 7.5) * Math.cos(r * 24);
-      var stretch = s0 * spring;
-      var drop = Math.min(s0 * 0.22, 5) * Math.max(spring, 0);
-      var swing = 7 * amp * dir * Math.exp(-r * 5.5) * Math.sin(r * 15);
-      var bend = bend0 * spring - swing * 0.9;
-      drawCord(stretch, bend, drop, swing * 0.6);
-      rig.style.setProperty("--swing", swing.toFixed(2) + "deg");
-      if (now - t0 < TOTAL) requestAnimationFrame(frame);
-      else { drawCord(0, 0, 0, 0); rig.style.setProperty("--swing", "0deg"); pulling = false; }
+      if (id !== animId) return;
+      // advance by real frame time but never more than ~1/30 s, so a stalled frame
+      // (e.g. while the browser snapshots the page for the theme reveal) can't make the cord jump
+      if (last !== null) elapsed += Math.min(now - last, 34);
+      last = now;
+      var r = elapsed / 1000;
+      var v = Math.exp(-4.2 * r) * Math.cos(17 * r);           // vertical spring (overshoots up)
+      var stretch = s0 * v; if (stretch < 0) stretch *= 0.35;  // cord shortens only a little above rest
+      var h = Math.exp(-3.4 * r);
+      var dx = x0 * h * Math.cos(12 * r) + sway * h * Math.sin(12 * r);
+      var drop = dropMax * v;                                   // bulb bobs with the cord
+      drawCord(stretch, dx, -dx * 0.18, drop, -dx * 0.45);
+      if (elapsed > 450) pulling = false;                       // the settle can be interrupted
+      if (elapsed < TOTAL) requestAnimationFrame(frame);
+      else { rest(); pulling = false; }
     }
     requestAnimationFrame(frame);
   }
 
-  // Tap / keyboard: a short automatic pull, then the same release
+  // Tap / keyboard: a short automatic pull straight down, then the same release
   function pullLamp(next) {
     pulling = true;
-    var PULL = 170, t0 = null;
+    var id = ++animId;
+    var fromS = pose.s, fromX = pose.dx;                         // start from wherever the cord is
+    var PULL = 170, elapsed = 0, last = null;
     function frame(now) {
-      if (t0 === null) t0 = now;
-      var k = Math.min((now - t0) / PULL, 1); k = k * k * (3 - 2 * k);
-      drawCord(16 * k, 5 * k, 3.5 * k, -3 * k);
+      if (id !== animId) return;
+      if (last !== null) elapsed += Math.min(now - last, 34);
+      last = now;
+      var k = Math.min(elapsed / PULL, 1); k = k * k * (3 - 2 * k);
+      var st = fromS + (16 - fromS) * k, x = fromX * (1 - k);
+      drawCord(st, x, -x * 0.18, 3.5 * k, -x * 0.45);
       if (k < 1) requestAnimationFrame(frame);
-      else releaseFrom(16, 5, 1, next);
+      else releaseFrom(16, 0, next);
     }
     requestAnimationFrame(frame);
   }
@@ -131,7 +149,9 @@
   themeBtn.addEventListener("pointerdown", function (e) {
     if (pulling || (e.pointerType === "mouse" && e.button !== 0)) return;
     if (reduceMotion && reduceMotion.matches) return; // reduced motion: plain tap behaviour only
-    drag = { id: e.pointerId, x: e.clientX, y: e.clientY, stretch: 0, bend: 0, moved: false };
+    drag = { id: e.pointerId, x: e.clientX, y: e.clientY, stretch: 0, dx: 0, moved: false };
+    animId++;                                                    // grabbing the cord stops any settle
+    if (pose.s !== 0 || pose.dx !== 0) rest();
     try { themeBtn.setPointerCapture(e.pointerId); } catch (err) { /* ignore */ }
   });
 
@@ -142,11 +162,9 @@
     drag.moved = true;
     e.preventDefault();
     var pull = Math.max(dy, 0);
-    drag.stretch = MAX_STRETCH * (1 - Math.exp(-pull / 55));      // rubber-band resistance
-    drag.bend = Math.max(-8, Math.min(8, dx * 0.35));              // cord bows toward the pointer
-    var swing = Math.max(-10, Math.min(10, dx * 0.12));
-    drawCord(drag.stretch, drag.bend, Math.min(drag.stretch * 0.22, 5), swing * 0.5);
-    rig.style.setProperty("--swing", swing.toFixed(2) + "deg");
+    drag.stretch = MAX_STRETCH * (1 - Math.exp(-pull / 55));      // rubber-band resistance down
+    drag.dx = 26 * Math.tanh(dx / 45);                             // and sideways, toward the pointer
+    drawCord(drag.stretch, drag.dx, -drag.dx * 0.18, Math.min(drag.stretch * 0.22, 5), -drag.dx * 0.45);
     themeBtn.classList.toggle("is-armed", drag.stretch >= SWITCH_AT);
   });
 
@@ -156,9 +174,8 @@
     themeBtn.classList.remove("is-armed");
     if (!d.moved) return;                 // a tap: let the click handler run the normal pull
     suppressUntil = performance.now() + 400; // a click right after a drag is not a second toggle
-    var dir = d.bend >= 0 ? 1 : -1;
     var willSwitch = !cancelled && d.stretch >= SWITCH_AT;
-    releaseFrom(d.stretch, d.bend, dir, willSwitch ? nextTheme() : null);
+    releaseFrom(d.stretch, d.dx, willSwitch ? nextTheme() : null);
   }
   themeBtn.addEventListener("pointerup", function (e) { endDrag(e, false); });
   themeBtn.addEventListener("pointercancel", function (e) { endDrag(e, true); });

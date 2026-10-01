@@ -28,8 +28,8 @@ assets/Syam-Kumar-Chenchugalla-Resume.pdf  Resume served by the "Download Resume
 - **Colors / themes:** light theme tokens are on `:root` and dark theme tokens on `[data-theme="dark"]` at the top of `styles.css`.
   Light is the default; a visitor's choice is saved in `localStorage` (`theme`), otherwise the system preference is used.
   The switch is the hanging bulb in the header: drag the cord down and let go to switch (it follows the pointer with rubber-band
-  resistance and springs back); a tap or Enter/Space plays the same pull automatically. Switching uses the View Transitions API for a radial reveal from the toggle where supported; other browsers get a
-  synchronized cross-fade of the registered colour tokens. Duration and easing are `--theme-dur` / `--theme-ease`.
+  resistance and springs back); a tap or Enter/Space plays the same pull automatically. Switching cross-fades the registered colour tokens on `:root` (nothing is snapshotted or moved), with a
+  soft light/shadow spill spreading from the bulb. Duration and easing are `--theme-dur` / `--theme-ease`.
 - **Icons:** reference a symbol with `<svg class="ti"><use href="assets/img/icons.svg#i-java"/></svg>`.
   Add a `t-*` class (e.g. `t-spring`) on a parent to tint icons and badges with that technology's colour.
 - **npm version:** this is fetched live from the npm registry. If that request fails, the line stays hidden.

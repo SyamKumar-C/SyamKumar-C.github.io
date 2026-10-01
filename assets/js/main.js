@@ -38,29 +38,31 @@
     fadeTimer = setTimeout(function () { doc.classList.remove("theme-anim"); }, ms + 60);
   }
 
-  // Radial reveal from the toggle, rendered by the browser as part of the theme change itself
-  function revealTo(theme, origin) {
+  // A soft wash of light (or shadow) spreading from the bulb, on top of the colour cross-fade.
+  // Purely decorative: the page itself never moves or gets snapshotted.
+  var spill = document.createElement("div");
+  spill.className = "theme-spill";
+  spill.setAttribute("aria-hidden", "true");
+  document.body.appendChild(spill);
+
+  function spillFrom(origin, theme) {
+    if (!origin || !spill.animate) return;
     var r = origin.getBoundingClientRect();
-    var x = r.left + r.width / 2;
-    var y = r.top + r.height / 2;
-    var max = Math.hypot(Math.max(x, window.innerWidth - x), Math.max(y, window.innerHeight - y));
-    doc.style.setProperty("--vt-x", x + "px");
-    doc.style.setProperty("--vt-y", y + "px");
-    doc.style.setProperty("--vt-max", Math.ceil(max / 0.7) + "px"); // mask is solid to 70% of radius
-    var vt = document.startViewTransition(function () { setTheme(theme); });
-    vt.finished.finally(function () {
-      doc.style.removeProperty("--vt-x");
-      doc.style.removeProperty("--vt-y");
-      doc.style.removeProperty("--vt-max");
-    });
+    var x = r.left + r.width / 2, y = r.top + r.height / 2;
+    var max = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+    spill.style.setProperty("--sx", x + "px");
+    spill.style.setProperty("--sy", y + "px");
+    spill.style.setProperty("--spill-c", theme === "light" ? "rgba(255, 214, 102, 0.38)" : "rgba(4, 8, 18, 0.42)");
+    spill.animate(
+      [{ "--spill-r": "0px", opacity: 0 }, { opacity: 1, offset: 0.25 }, { "--spill-r": max * 1.15 + "px", opacity: 0 }],
+      { duration: 720, easing: "cubic-bezier(0.4, 0, 0.2, 1)" }
+    );
   }
 
   function changeTheme(theme, origin) {
     if (theme === doc.getAttribute("data-theme")) return;
-    var canReveal = typeof document.startViewTransition === "function" &&
-      !(reduceMotion && reduceMotion.matches) && origin;
-    if (canReveal) revealTo(theme, origin);
-    else crossfadeTo(theme);
+    if (origin && !(reduceMotion && reduceMotion.matches)) spillFrom(origin, theme);
+    crossfadeTo(theme);
   }
 
   setTheme(doc.getAttribute("data-theme") === "dark" ? "dark" : "light");
@@ -101,7 +103,7 @@
     if (next) { saveTheme(next); changeTheme(next, bulb); }
     var sway = Math.abs(x0) < 3 ? 6 : 0;         // a straight pull still sways a little
     var dropMax = Math.min(s0 * 0.22, 5);
-    var elapsed = 0, last = null, TOTAL = 1350;
+    var elapsed = 0, last = null, TOTAL = 1350, startWall = performance.now();
     function frame(now) {
       if (id !== animId) return;
       // advance by real frame time but never more than ~1/30 s, so a stalled frame
@@ -115,7 +117,8 @@
       var dx = x0 * h * Math.cos(12 * r) + sway * h * Math.sin(12 * r);
       var drop = dropMax * v;                                   // bulb bobs with the cord
       drawCord(stretch, dx, -dx * 0.18, drop, -dx * 0.45);
-      if (elapsed > 450) pulling = false;                       // the settle can be interrupted
+      // the settle can be interrupted after ~450ms of animation, or ~600ms of real time if frames are slow
+      if (elapsed > 450 || performance.now() - startWall > 600) pulling = false;
       if (elapsed < TOTAL) requestAnimationFrame(frame);
       else { rest(); pulling = false; }
     }

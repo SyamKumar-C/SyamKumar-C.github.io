@@ -836,7 +836,7 @@ img, svg { display: block; max-width: 100%; }
 }
 .lamp:focus-visible { outline: none; }
 .lamp { touch-action: none; user-select: none; -webkit-user-select: none; }
-.lamp-hit, .lamp-bulb, .lamp-label { cursor: grab; }
+.lamp-hit, .lamp-head, .lamp-label { cursor: grab; }
 .lamp:active .lamp-hit, .lamp:active .lamp-label { cursor: grabbing; }
 /* past the switch point while dragging: the label previews the change */
 .lamp.is-armed .lamp-label { color: var(--accent-ink); background: var(--accent); border-color: var(--accent); }
@@ -850,11 +850,39 @@ img, svg { display: block; max-width: 100%; }
   transform: scale(var(--rig-scale, 1));
   pointer-events: none;            /* only the cord hit area, bulb and label take input */
 }
-.lamp-svg { display: block; width: 104px; height: 170px; overflow: visible; }
-.lamp-hit { fill: transparent; pointer-events: all; }
-.lamp-bulb, .lamp-label { pointer-events: auto; }
+/* Rig coordinates: the cord hangs from x=52, y=39 (bulb base) to y=82; the knob centre rests at y=86.
+   Cord, knob, tag and head move only with transforms, so the release animation runs on the compositor. */
+.lamp-hit { position: absolute; left: 34px; top: 0; width: 36px; height: 112px; pointer-events: auto; }
+.lamp-head { position: absolute; left: 0; top: 0; width: 104px; height: 44px; transform-origin: 52px 7px; pointer-events: none; }
+.lamp-head .lamp-bulb { pointer-events: auto; }
+.lamp-svg { display: block; width: 104px; height: 44px; overflow: visible; }
+.lamp-cord {
+  position: absolute;
+  left: 51.2px; top: 39px;
+  width: 1.6px; height: 43px;
+  border-radius: 1px;
+  background: var(--text-dim);
+  transform-origin: 50% 0;
+}
+.lamp-knob {
+  position: absolute;
+  left: 48px; top: 82px;
+  width: 8px; height: 8px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  border: 1.6px solid var(--text-dim);
+  background: var(--surface);
+}
+.lamp-tag {
+  position: absolute;
+  left: 52px; top: 92px;
+  width: 0;
+  display: flex;
+  justify-content: center;
+}
+.lamp-cord, .lamp-knob, .lamp-tag, .lamp-head { will-change: transform; }
+.lamp-label { pointer-events: auto; }
 .lamp-wire { stroke: var(--border-strong); stroke-width: 1.5; fill: none; }
-.lamp-bulb { transform-box: view-box; transform-origin: 22px 7px; }
 .lamp-socket { fill: #8a92a6; }
 .lamp-base { fill: #6f7790; }
 .lamp-glass {
@@ -869,13 +897,10 @@ img, svg { display: block; max-width: 100%; }
 :root:not([data-theme="dark"]) .lamp-glass { fill: #ffe7a1; stroke: #e9a91c; }
 :root:not([data-theme="dark"]) .lamp-filament { stroke: #d97706; }
 :root:not([data-theme="dark"]) .lamp-halo { opacity: 0.55; }
-.lamp-cord { fill: none; stroke: var(--text-dim); stroke-width: 1.6; stroke-linecap: round; }
-.lamp-knob { fill: var(--surface); stroke: var(--text-dim); stroke-width: 1.6; }
 .lamp-label {
-  position: absolute;
-  left: 50%; top: 92px;
+  position: relative;
+  flex: none;
   display: grid;
-  translate: calc(-50% + var(--lx, 0px)) var(--ly, 0px);
   padding: 2px 7px;
   border: 1px solid var(--border-strong);
   border-radius: 6px;

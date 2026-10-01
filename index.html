@@ -88,21 +88,23 @@
       <div class="nav-actions">
         <button class="lamp" type="button" aria-pressed="false" aria-label="Dark theme" title="Pull to switch theme">
           <span class="lamp-rig" aria-hidden="true">
-            <svg class="lamp-svg" viewBox="-30 0 104 170" focusable="false">
-              <defs><radialGradient id="lampGlow"><stop offset="0" stop-color="#ffd34d" stop-opacity=".9"/><stop offset=".55" stop-color="#ffd34d" stop-opacity=".35"/><stop offset="1" stop-color="#ffd34d" stop-opacity="0"/></radialGradient></defs>
-              <rect class="lamp-hit" x="4" y="0" width="36" height="104" rx="8"/>
-              <path class="lamp-wire" d="M22 0V7"/>
-              <g class="lamp-bulb">
-                <circle class="lamp-halo" cx="22" cy="23" r="21"/>
-                <rect class="lamp-socket" x="16.5" y="6" width="11" height="7" rx="2"/>
-                <path class="lamp-glass" d="M22 12.5c-6.3 0-10.6 4.4-10.6 10.2 0 3.9 2.1 6.4 4 8.4 1.3 1.3 1.9 2.5 1.9 4h9.4c0-1.5.6-2.7 1.9-4 1.9-2 4-4.5 4-8.4 0-5.8-4.3-10.2-10.6-10.2z"/>
-                <path class="lamp-filament" d="M18.6 27.5l1.8-3.2 1.6 3.2 1.6-3.2 1.8 3.2"/>
-                <rect class="lamp-base" x="17.8" y="35.4" width="8.4" height="3.6" rx="1.2"/>
-              </g>
-              <path class="lamp-cord" d="M22 39 Q22 60 22 82"/>
-              <circle class="lamp-knob" cx="22" cy="86" r="4"/>
-            </svg>
-            <span class="lamp-label"><span class="ll ll-dark">Dark</span><span class="ll ll-light">Light</span></span>
+            <span class="lamp-hit"></span>
+            <span class="lamp-cord"></span>
+            <span class="lamp-knob"></span>
+            <span class="lamp-head">
+              <svg class="lamp-svg" viewBox="-30 0 104 44" focusable="false">
+                <defs><radialGradient id="lampGlow"><stop offset="0" stop-color="#ffd34d" stop-opacity=".9"/><stop offset=".55" stop-color="#ffd34d" stop-opacity=".35"/><stop offset="1" stop-color="#ffd34d" stop-opacity="0"/></radialGradient></defs>
+                <path class="lamp-wire" d="M22 0V7"/>
+                <g class="lamp-bulb">
+                  <circle class="lamp-halo" cx="22" cy="23" r="21"/>
+                  <rect class="lamp-socket" x="16.5" y="6" width="11" height="7" rx="2"/>
+                  <path class="lamp-glass" d="M22 12.5c-6.3 0-10.6 4.4-10.6 10.2 0 3.9 2.1 6.4 4 8.4 1.3 1.3 1.9 2.5 1.9 4h9.4c0-1.5.6-2.7 1.9-4 1.9-2 4-4.5 4-8.4 0-5.8-4.3-10.2-10.6-10.2z"/>
+                  <path class="lamp-filament" d="M18.6 27.5l1.8-3.2 1.6 3.2 1.6-3.2 1.8 3.2"/>
+                  <rect class="lamp-base" x="17.8" y="35.4" width="8.4" height="3.6" rx="1.2"/>
+                </g>
+              </svg>
+            </span>
+            <span class="lamp-tag"><span class="lamp-label"><span class="ll ll-dark">Dark</span><span class="ll ll-light">Light</span></span></span>
           </span>
         </button>
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu">

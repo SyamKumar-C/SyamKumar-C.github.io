@@ -816,6 +816,11 @@ img, svg { display: block; max-width: 100%; }
   -webkit-tap-highlight-color: transparent;
 }
 .lamp:focus-visible { outline: none; }
+.lamp { touch-action: none; user-select: none; -webkit-user-select: none; }
+.lamp-rig { cursor: grab; }
+.lamp:active .lamp-rig { cursor: grabbing; }
+/* past the switch point while dragging: the label previews the change */
+.lamp.is-armed .lamp-label { color: var(--accent-ink); background: var(--accent); border-color: var(--accent); }
 .lamp:focus-visible .lamp-label { outline: 2px solid var(--accent); outline-offset: 2px; }
 .lamp:focus-visible .lamp-glass { stroke: var(--accent); stroke-width: 2; }
 .lamp-rig {

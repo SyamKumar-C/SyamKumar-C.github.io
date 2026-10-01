@@ -9,7 +9,8 @@
   var themeBtn = document.querySelector(".theme-toggle");
   var themeMeta = document.querySelector('meta[name="theme-color"]');
   var systemDark = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;
-  var animTimer;
+  var reduceMotion = window.matchMedia ? window.matchMedia("(prefers-reduced-motion: reduce)") : null;
+  var fadeTimer;
 
   function savedTheme() {
     try {
@@ -18,12 +19,7 @@
     } catch (e) { return null; }
   }
 
-  function applyTheme(theme, animate) {
-    if (animate) {
-      doc.classList.add("theme-anim");
-      clearTimeout(animTimer);
-      animTimer = setTimeout(function () { doc.classList.remove("theme-anim"); }, 350);
-    }
+  function setTheme(theme) {
     doc.setAttribute("data-theme", theme);
     var dark = theme === "dark";
     themeBtn.setAttribute("aria-pressed", String(dark));
@@ -31,17 +27,53 @@
     if (themeMeta) themeMeta.setAttribute("content", dark ? "#0b0d11" : "#fafbfc");
   }
 
-  applyTheme(doc.getAttribute("data-theme") === "dark" ? "dark" : "light", false);
+  // Synchronised colour cross-fade (fallback, and the short reduced-motion version)
+  function crossfadeTo(theme) {
+    var ms = parseFloat(getComputedStyle(doc).getPropertyValue("--theme-dur")) || 520;
+    if (reduceMotion && reduceMotion.matches) ms = 120;
+    doc.classList.add("theme-anim");
+    void doc.offsetWidth; // commit current colours so every element starts from the same state
+    setTheme(theme);
+    clearTimeout(fadeTimer);
+    fadeTimer = setTimeout(function () { doc.classList.remove("theme-anim"); }, ms + 60);
+  }
+
+  // Radial reveal from the toggle, rendered by the browser as part of the theme change itself
+  function revealTo(theme, origin) {
+    var r = origin.getBoundingClientRect();
+    var x = r.left + r.width / 2;
+    var y = r.top + r.height / 2;
+    var max = Math.hypot(Math.max(x, window.innerWidth - x), Math.max(y, window.innerHeight - y));
+    doc.style.setProperty("--vt-x", x + "px");
+    doc.style.setProperty("--vt-y", y + "px");
+    doc.style.setProperty("--vt-max", Math.ceil(max / 0.7) + "px"); // mask is solid to 70% of radius
+    var vt = document.startViewTransition(function () { setTheme(theme); });
+    vt.finished.finally(function () {
+      doc.style.removeProperty("--vt-x");
+      doc.style.removeProperty("--vt-y");
+      doc.style.removeProperty("--vt-max");
+    });
+  }
+
+  function changeTheme(theme, origin) {
+    if (theme === doc.getAttribute("data-theme")) return;
+    var canReveal = typeof document.startViewTransition === "function" &&
+      !(reduceMotion && reduceMotion.matches) && origin;
+    if (canReveal) revealTo(theme, origin);
+    else crossfadeTo(theme);
+  }
+
+  setTheme(doc.getAttribute("data-theme") === "dark" ? "dark" : "light");
 
   themeBtn.addEventListener("click", function () {
     var next = doc.getAttribute("data-theme") === "dark" ? "light" : "dark";
     try { localStorage.setItem(THEME_KEY, next); } catch (e) { /* not persisted */ }
-    applyTheme(next, true);
+    changeTheme(next, themeBtn);
   });
 
   if (systemDark && systemDark.addEventListener) {
     systemDark.addEventListener("change", function (e) {
-      if (!savedTheme()) applyTheme(e.matches ? "dark" : "light", true);
+      if (!savedTheme()) changeTheme(e.matches ? "dark" : "light", null);
     });
   }
 

@@ -26,6 +26,8 @@ assets/Syam-Kumar-Chenchugalla-Resume.pdf  Resume served by the "Download Resume
   bullets that are always visible and more inside a `<details>` block.
 - **Colors / themes:** light theme tokens are on `:root` and dark theme tokens on `[data-theme="dark"]` at the top of `styles.css`.
   Light is the default; a visitor's choice is saved in `localStorage` (`theme`), otherwise the system preference is used.
+  Switching uses the View Transitions API for a radial reveal from the toggle where supported; other browsers get a
+  synchronized cross-fade of the registered colour tokens. Duration and easing are `--theme-dur` / `--theme-ease`.
 - **npm version:** this is fetched live from the npm registry. If that request fails, the line stays hidden.
 
 ## Run locally

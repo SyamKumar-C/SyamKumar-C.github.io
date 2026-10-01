@@ -18,6 +18,7 @@ assets/img/favicon.svg                   Favicon
 assets/img/og-image.png                  1200x630 social preview image
 assets/Syam-Kumar-Chenchugalla-Resume.pdf  Resume served by the "Download Resume" buttons
 .nojekyll                                Serve files as-is on GitHub Pages
+tools/version-assets.py                  Stamps asset URLs in index.html with content hashes
 ```
 
 ## Common updates
@@ -33,6 +34,15 @@ assets/Syam-Kumar-Chenchugalla-Resume.pdf  Resume served by the "Download Resume
 - **Icons:** reference a symbol with `<svg class="ti"><use href="assets/img/icons.svg#i-java"/></svg>`.
   Add a `t-*` class (e.g. `t-spring`) on a parent to tint icons and badges with that technology's colour.
 - **npm version:** this is fetched live from the npm registry. If that request fails, the line stays hidden.
+
+## After editing CSS, JS or icons
+
+Asset URLs in `index.html` carry a content hash (`styles.css?v=…`) so browsers never pair a new page with a
+cached old stylesheet or script. Refresh the hashes after any change to those files:
+
+```sh
+python3 tools/version-assets.py
+```
 
 ## Run locally
 

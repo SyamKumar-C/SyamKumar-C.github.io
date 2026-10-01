@@ -113,9 +113,33 @@
 @property --accent-line { syntax: "<color>"; inherits: true; initial-value: rgba(10, 98, 194, 0.3); }
 @property --header-bg { syntax: "<color>"; inherits: true; initial-value: rgba(250, 251, 252, 0.85); }
 @property --grid-line { syntax: "<color>"; inherits: true; initial-value: rgba(14, 23, 38, 0.055); }
+@property --il-wall { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --il-grid { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --il-frame { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --il-stand { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --il-desk { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --il-desk-edge { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --il-ui-bg { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --il-ui-line { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --il-ui-card { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --il-mug { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --il-steam { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --il-chair { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --il-hoodie-a { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --il-hoodie-b { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --sec-a { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --sec-b { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --wash-1 { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --wash-2 { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --blob-1 { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --blob-2 { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --blob-3 { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --dot { syntax: "<color>"; inherits: true; initial-value: transparent; }
+@property --cyan { syntax: "<color>"; inherits: true; initial-value: transparent; }
 
 .theme-anim {
-  transition-property: --bg, --bg-alt, --surface, --surface-2, --code-bg, --border, --border-strong, --text, --text-muted, --text-dim, --accent, --accent-strong, --accent-ink, --accent-text, --accent-soft, --accent-line, --header-bg, --grid-line;
+  transition-property: --bg, --bg-alt, --surface, --surface-2, --code-bg, --border, --border-strong, --text, --text-muted, --text-dim, --accent, --accent-strong, --accent-ink, --accent-text, --accent-soft, --accent-line, --header-bg, --grid-line,
+    --il-wall, --il-grid, --il-frame, --il-stand, --il-desk, --il-desk-edge, --il-ui-bg, --il-ui-line, --il-ui-card, --il-mug, --il-steam, --il-chair, --il-hoodie-a, --il-hoodie-b, --sec-a, --sec-b, --wash-1, --wash-2, --blob-1, --blob-2, --blob-3, --dot, --cyan;
   transition-duration: var(--theme-dur);
   transition-timing-function: var(--theme-ease);
 }
@@ -124,26 +148,6 @@
   transition-property: transform, opacity !important;
 }
 
-@property --vt-r {
-  syntax: "<length>";
-  inherits: true;
-  initial-value: 0px;
-}
-::view-transition-old(root),
-::view-transition-new(root) {
-  animation: none;
-  mix-blend-mode: normal;
-}
-::view-transition-new(root) {
-  /* soft feathered edge: opaque inside 70% of the radius, fading out to the rim */
-  -webkit-mask-image: radial-gradient(circle at var(--vt-x, 100%) var(--vt-y, 0%), #000 calc(var(--vt-r) * 0.7), transparent var(--vt-r));
-  mask-image: radial-gradient(circle at var(--vt-x, 100%) var(--vt-y, 0%), #000 calc(var(--vt-r) * 0.7), transparent var(--vt-r));
-  animation: theme-reveal var(--theme-dur) var(--theme-ease) both;
-}
-@keyframes theme-reveal {
-  from { --vt-r: 0px; }
-  to   { --vt-r: var(--vt-max, 150vmax); }
-}
 
 /* ---------- Base ---------- */
 *, *::before, *::after { box-sizing: border-box; }
@@ -433,6 +437,13 @@ img, svg { display: block; max-width: 100%; }
   --tint: 12%;
   --glow: 0 0 0 transparent;
   --dot: rgba(14, 23, 38, 0.09);
+  --sec-a: #f2effb;
+  --sec-b: #eef4fd;
+  --wash-1: rgba(124, 58, 237, 0.08);
+  --wash-2: rgba(14, 165, 233, 0.08);
+  --blob-1: rgba(124, 58, 237, 0.25);
+  --blob-2: rgba(14, 165, 233, 0.25);
+  --blob-3: rgba(240, 140, 0, 0.17);
   --cyan: #0ea5e9;
   --brand-grad: linear-gradient(100deg, var(--accent) 0%, var(--cyan) 55%, #22c55e 100%);
   --text-grad: linear-gradient(100deg, #0a5bb5 0%, #0b6f9e 55%, #0f766e 100%);
@@ -441,6 +452,13 @@ img, svg { display: block; max-width: 100%; }
   --text-grad: linear-gradient(100deg, #8fd0ff 0%, #67e8f9 55%, #6ee7b7 100%);
   --tint: 16%;
   --dot: rgba(255, 255, 255, 0.06);
+  --sec-a: #0f1217;
+  --sec-b: #0f1217;
+  --wash-1: rgba(124, 58, 237, 0);
+  --wash-2: rgba(14, 165, 233, 0);
+  --blob-1: rgba(92, 184, 255, 0.22);
+  --blob-2: rgba(34, 197, 94, 0.16);
+  --blob-3: rgba(240, 140, 0, 0.12);
   --cyan: #38bdf8;
 }
 
@@ -457,7 +475,7 @@ img, svg { display: block; max-width: 100%; }
 .section-alt {
   background:
     radial-gradient(var(--dot) 1px, transparent 1.2px) 0 0 / 22px 22px,
-    var(--bg-alt);
+    linear-gradient(180deg, var(--sec-a) 0%, var(--sec-b) 100%);
   border-block: 1px solid var(--border);
 }
 /* architecture-style hairline with a node, marking each tinted section */
@@ -523,10 +541,11 @@ img, svg { display: block; max-width: 100%; }
   will-change: transform;
   animation: drift 22s ease-in-out infinite alternate;
 }
-.hero .blob-a { width: 520px; height: 520px; right: -120px; top: -160px; background: radial-gradient(circle, color-mix(in srgb, var(--accent) 22%, transparent) 0%, transparent 65%); }
-.hero .blob-b { width: 420px; height: 420px; right: 18%; bottom: -220px; background: radial-gradient(circle, rgba(34, 197, 94, 0.16) 0%, transparent 65%); animation-duration: 28s; }
-.hero .blob-c { width: 360px; height: 360px; left: -160px; top: 30%; background: radial-gradient(circle, rgba(240, 140, 0, 0.12) 0%, transparent 65%); animation-duration: 32s; animation-direction: alternate-reverse; }
-[data-theme="dark"] .blob { opacity: 0.8; }
+.hero .blob { opacity: 0.8; }
+.hero .blob-a { width: 520px; height: 520px; right: -120px; top: -160px; background: radial-gradient(circle, var(--blob-1) 0%, transparent 65%); }
+.hero .blob-b { width: 420px; height: 420px; right: 18%; bottom: -220px; background: radial-gradient(circle, var(--blob-2) 0%, transparent 65%); animation-duration: 28s; }
+.hero .blob-c { width: 360px; height: 360px; left: -160px; top: 30%; background: radial-gradient(circle, var(--blob-3) 0%, transparent 65%); animation-duration: 32s; animation-direction: alternate-reverse; }
+.contact .blob { opacity: 0.7; }
 @keyframes drift {
   from { transform: translate3d(0, 0, 0) scale(1); }
   to   { transform: translate3d(-40px, 30px, 0) scale(1.08); }
@@ -830,14 +849,10 @@ img, svg { display: block; max-width: 100%; }
   transform-origin: 52px 0;
   transform: scale(var(--rig-scale, 1));
   pointer-events: none;            /* only the cord hit area, bulb and label take input */
-  view-transition-name: theme-lamp; /* stays live above the page during the theme reveal */
 }
 .lamp-svg { display: block; width: 104px; height: 170px; overflow: visible; }
 .lamp-hit { fill: transparent; pointer-events: all; }
 .lamp-bulb, .lamp-label { pointer-events: auto; }
-::view-transition-group(theme-lamp) { animation: none; }
-::view-transition-old(theme-lamp) { display: none; }
-::view-transition-new(theme-lamp) { animation: none; }
 .lamp-wire { stroke: var(--border-strong); stroke-width: 1.5; fill: none; }
 .lamp-bulb { transform-box: view-box; transform-origin: 22px 7px; }
 .lamp-socket { fill: #8a92a6; }
@@ -1732,20 +1747,11 @@ img, svg { display: block; max-width: 100%; }
 
 
 /* ---------- Light theme: warm, layered, colourful (dark keeps its own look) ---------- */
-:root:not([data-theme="dark"]) body {
+body {
   background:
-    radial-gradient(1100px 620px at 92% -8%, rgba(124, 58, 237, 0.08), transparent 62%),
-    radial-gradient(900px 600px at -12% 22%, rgba(14, 165, 233, 0.08), transparent 60%),
+    radial-gradient(1100px 620px at 92% -8%, var(--wash-1), transparent 62%),
+    radial-gradient(900px 600px at -12% 22%, var(--wash-2), transparent 60%),
     var(--bg);
-}
-:root:not([data-theme="dark"]) .hero .blob { opacity: 1; }
-:root:not([data-theme="dark"]) .hero .blob-a { background: radial-gradient(circle, rgba(124, 58, 237, 0.20) 0%, transparent 65%); }
-:root:not([data-theme="dark"]) .hero .blob-b { background: radial-gradient(circle, rgba(14, 165, 233, 0.20) 0%, transparent 65%); }
-:root:not([data-theme="dark"]) .hero .blob-c { background: radial-gradient(circle, rgba(240, 140, 0, 0.14) 0%, transparent 65%); }
-:root:not([data-theme="dark"]) .section-alt {
-  background:
-    radial-gradient(var(--dot) 1px, transparent 1.2px) 0 0 / 22px 22px,
-    linear-gradient(180deg, #f2effb 0%, #eef4fd 100%);
 }
 :root:not([data-theme="dark"]) .metric-card,
 :root:not([data-theme="dark"]) .strength,
@@ -1859,4 +1865,15 @@ mark.hl {
 @media print {
   .site-header, .hero-bg, .hero-art, .nav-toggle, .contact-bg, .project-art { display: none !important; }
   body { background: #fff; color: #000; }
+}
+
+/* ---------- Theme switch: light spill from the bulb ---------- */
+@property --spill-r { syntax: "<length>"; inherits: false; initial-value: 0px; }
+.theme-spill {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(circle at var(--sx, 100%) var(--sy, 0%), var(--spill-c, rgba(255, 214, 102, 0.4)) 0%, transparent var(--spill-r));
 }

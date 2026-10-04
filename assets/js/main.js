@@ -356,6 +356,83 @@
   }
 
 
+  /* ---- Meaningful motion ---- */
+
+  // Reading progress under the header
+  var progress = document.createElement("span");
+  progress.className = "scroll-progress";
+  progress.setAttribute("aria-hidden", "true");
+  header.appendChild(progress);
+  var progRaf = 0;
+  function onProgress() {
+    if (progRaf) return;
+    progRaf = requestAnimationFrame(function () {
+      progRaf = 0;
+      var max = document.documentElement.scrollHeight - innerHeight;
+      progress.style.setProperty("--progress", max > 0 ? (scrollY / max).toFixed(4) : 0);
+    });
+  }
+  window.addEventListener("scroll", onProgress, { passive: true });
+  onProgress();
+
+  // Items inside a revealed card enter one after another
+  [".role-card .bullets:not(.more .bullets) > li", ".capabilities > li", ".skill-group .tags > li", ".oss-tags > li", ".flow-ops > li"].forEach(function (sel) {
+    var groups = new Map();
+    document.querySelectorAll(sel).forEach(function (li) {
+      var parent = li.parentElement, n = groups.get(parent) || 0;
+      li.classList.add("stagger-item");
+      li.style.setProperty("--i", Math.min(n, 12));
+      groups.set(parent, n + 1);
+    });
+  });
+
+  // A looping sequence that only runs while its element is on screen
+  function sequence(container, items, opts) {
+    if (!container || !items.length || !motionOK || !("IntersectionObserver" in window)) return;
+    var timer = null, i = -1, paused = false;
+    function clear() { items.forEach(function (el) { el.classList.remove("is-active", "is-done"); }); if (opts.onStep) opts.onStep(-1); }
+    function tick() {
+      if (paused) return;
+      i++;
+      if (i >= items.length) { clear(); i = -1; timer = setTimeout(tick, opts.pause); return; }
+      items.forEach(function (el, k) { el.classList.toggle("is-active", k === i); el.classList.toggle("is-done", k < i); });
+      if (opts.onStep) opts.onStep(i);
+      timer = setTimeout(tick, i === items.length - 1 ? opts.step * 1.6 : opts.step);
+    }
+    function start() { if (!timer) { i = -1; timer = setTimeout(tick, 500); } }
+    function stop() { clearTimeout(timer); timer = null; clear(); }
+    new IntersectionObserver(function (entries) {
+      entries[0].isIntersecting ? start() : stop();
+    }, { threshold: 0.45 }).observe(container);
+    if (opts.pauseOnHover) {
+      container.addEventListener("pointerenter", function () { paused = true; stop(); });
+      container.addEventListener("pointerleave", function () { paused = false; start(); });
+      container.addEventListener("focusin", function () { paused = true; stop(); });
+      container.addEventListener("focusout", function () { paused = false; start(); });
+    }
+  }
+
+  // eBDN: follow one request through the layers
+  var sysmap = document.querySelector(".sysmap");
+  if (sysmap) {
+    var trace = sysmap.querySelector(".trace");
+    var lines = [
+      "<b>Angular</b> sends the request with a JWT",
+      "<b>Spring Boot API</b> authenticates the call",
+      "<b>Tenant context</b> is resolved for this request",
+      "<b>AbstractRoutingDataSource</b> picks that tenant's datasource",
+      "<b>PostgreSQL</b> serves the tenant's data"
+    ];
+    sequence(sysmap, Array.prototype.slice.call(sysmap.querySelectorAll(".flow-step")), {
+      step: 1100, pause: 1800, pauseOnHover: true,
+      onStep: function (k) { if (trace) trace.innerHTML = k < 0 ? "" : "→ " + lines[k]; }
+    });
+  }
+
+  // About: build → CI → deploy → run → observe
+  var life = document.querySelector(".lifecycle");
+  if (life) sequence(life, Array.prototype.slice.call(life.children), { step: 650, pause: 1600 });
+
   /* ---- Gentle parallax on the hero illustration cards ---- */
   var art = document.querySelector(".hero-art");
   var finePointer = window.matchMedia && matchMedia("(hover: hover) and (pointer: fine)").matches;

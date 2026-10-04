@@ -1902,3 +1902,100 @@ mark.hl {
   opacity: 0;
   background: radial-gradient(circle at var(--sx, 100%) var(--sy, 0%), var(--spill-c, rgba(255, 214, 102, 0.4)) 0%, transparent var(--spill-r));
 }
+
+/* ==========================================================================
+   Meaningful motion
+   ========================================================================== */
+
+/* Reading progress along the bottom edge of the header */
+.scroll-progress {
+  position: absolute;
+  left: 0; right: 0; bottom: -1px;
+  height: 2px;
+  background: var(--brand-grad);
+  transform-origin: 0 50%;
+  transform: scaleX(var(--progress, 0));
+  pointer-events: none;
+}
+
+/* Section headings: the kicker rule draws in, the title follows */
+.js .section-head.reveal .kicker::before { transform: scaleX(0); transform-origin: left; transition: transform 0.6s var(--ease) 0.15s; }
+.js .section-head.reveal.is-visible .kicker::before { transform: scaleX(1); }
+
+/* Children that enter one after another once their card is revealed */
+.js .reveal .stagger-item {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.45s var(--ease), transform 0.45s var(--ease);
+  transition-delay: calc(180ms + var(--i, 0) * 45ms);
+}
+.js .reveal.is-visible .stagger-item { opacity: 1; transform: none; }
+
+/* Strength icons pop in with a little overshoot */
+.js .strength.reveal .strength-ico { transform: scale(0.6); opacity: 0; transition: transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s, opacity 0.3s var(--ease) 0.2s; }
+.js .strength.reveal.is-visible .strength-ico { transform: none; opacity: 1; }
+.js .strength.reveal.is-visible:hover .strength-ico { transform: rotate(-6deg) scale(1.06); }
+
+/* eBDN diagram: a request travels through the layers, lighting each one in turn */
+.flow-step.is-active {
+  border-color: var(--tone);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--tone) 18%, transparent), 0 12px 28px -16px color-mix(in srgb, var(--tone) 80%, transparent);
+}
+.flow-step.is-active .flow-ico { animation: hop 0.5s var(--ease); }
+@keyframes hop { 40% { transform: translateY(-3px) scale(1.08); } }
+.flow-step { transition: transform 0.25s var(--ease), box-shadow 0.35s var(--ease), border-color 0.35s var(--ease); }
+.sysmap .trace {
+  margin-top: 12px;
+  min-height: 1.4em;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-dim);
+}
+.sysmap .trace b { color: var(--text); font-weight: 600; }
+
+/* About: the delivery lifecycle plays as a sequence */
+.lifecycle li { transition: border-color 0.3s var(--ease), color 0.3s var(--ease), box-shadow 0.3s var(--ease); }
+.lifecycle li.is-active {
+  color: var(--text);
+  border-color: color-mix(in srgb, var(--tone) 60%, var(--border));
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--tone) 14%, transparent);
+}
+.lifecycle li.is-done + li::before { background: var(--accent); }
+
+/* Skills: one light panel of labelled rows instead of eight boxed cards */
+.skills {
+  display: grid;
+  gap: 0;
+  padding: 6px 20px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+}
+.skill-group,
+.skill-group-lg {
+  display: grid;
+  gap: 10px;
+  padding: 16px 0;
+  border: 0;
+  border-bottom: 1px dashed var(--border);
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+}
+.skill-group:last-child { border-bottom: 0; }
+.skill-group h3 { margin: 0; }
+@media (min-width: 640px) {
+  .skills { grid-template-columns: minmax(0, 1fr); padding: 6px 28px; }
+  .skill-group, .skill-group-lg { grid-template-columns: 190px minmax(0, 1fr); align-items: center; gap: 16px; }
+}
+@media (min-width: 1024px) {
+  .skills { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 48px; }
+  .skill-group, .skill-group-lg { grid-column: auto; padding: 18px 0; }
+  .skill-group:nth-last-child(2) { border-bottom: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .reveal .stagger-item, .js .strength.reveal .strength-ico { opacity: 1; transform: none; }
+  .js .section-head.reveal .kicker::before { transform: none; }
+}
